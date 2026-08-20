@@ -9,7 +9,7 @@ export const localDestinations = [
   { id: 'rishikesh', name: 'Rishikesh', region: 'local', tagline: 'Yoga & Rapids', image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop', startingPrice: 4999, distanceKm: 240 },
   { id: 'chandigarh', name: 'Chandigarh', region: 'local', tagline: 'The Planned City', image: '/destinations/chandigarh.jpg', startingPrice: 5499, distanceKm: 250 },
   { id: 'shimla', name: 'Shimla', region: 'local', tagline: 'Queen of Hills', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop', startingPrice: 6999, distanceKm: 350 },
-  { id: 'amritsar', name: 'Amritsar', region: 'local', tagline: 'Golden Temple', image: 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=1200&auto=format&fit=crop', startingPrice: 7999, distanceKm: 450 },
+  { id: 'amritsar', name: 'Amritsar', region: 'local', tagline: 'Golden Temple', image: '/destinations/amritsar.jpg', startingPrice: 7999, distanceKm: 450 },
 ]
 
 export const indiaDestinations = [
