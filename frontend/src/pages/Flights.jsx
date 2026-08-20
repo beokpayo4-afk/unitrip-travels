@@ -42,7 +42,7 @@ export default function Flights() {
       <div className="container-x max-w-2xl mx-auto text-center mb-10">
         <p className="section-heading-eyebrow mb-3">Flights</p>
         <h1 className="font-heading font-bold text-3xl sm:text-4xl text-navy mb-3">Find Your Flight</h1>
-        <p className="text-charcoal/60">Compare multiple flights across India and Unitrip international destinations.</p>
+        <p className="text-charcoal/60">Search live flights across India and Unitrip international destinations.</p>
       </div>
 
       <div className="container-x max-w-2xl mx-auto">
