@@ -56,10 +56,10 @@ export const tourItinerary = {
 }
 
 export const testimonials = [
-  { id: 1, name: 'Ananya Sharma', location: 'Mumbai, India', rating: 5, avatar: 'https://i.pravatar.cc/100?img=32', review: 'Our Kerala trip was flawlessly organized. Every houseboat stay and transfer was on time. Highly recommend Unitrip Travels for family vacations.' },
-  { id: 2, name: 'Rohan Mehta', location: 'Delhi, India', rating: 5, avatar: 'https://i.pravatar.cc/100?img=12', review: 'The Bali honeymoon package exceeded expectations. The villa, the itinerary, everything felt personally curated for us.' },
-  { id: 3, name: 'Priya Nair', location: 'Bengaluru, India', rating: 4, avatar: 'https://i.pravatar.cc/100?img=45', review: 'Smooth booking process and great customer support throughout our Rajasthan heritage tour. Will book again.' },
-  { id: 4, name: 'Karan Verma', location: 'Pune, India', rating: 5, avatar: 'https://i.pravatar.cc/100?img=51', review: 'Customized our Switzerland trip exactly around our budget and dates. Truly a hassle-free experience end to end.' },
+  { id: 1, name: 'Ananya Sharma', location: 'Mumbai, India', rating: 5, avatar: '/testimonials/ananya-sharma.jpg', review: 'Our Kerala trip was flawlessly organized. Every houseboat stay and transfer was on time. Highly recommend Unitrip Travels for family vacations.' },
+  { id: 2, name: 'Rohan Mehta', location: 'Delhi, India', rating: 5, avatar: '/testimonials/rohan-mehta.jpg', review: 'The Bali honeymoon package exceeded expectations. The villa, the itinerary, everything felt personally curated for us.' },
+  { id: 3, name: 'Priya Nair', location: 'Bengaluru, India', rating: 4, avatar: '/testimonials/priya-nair.jpg', review: 'Smooth booking process and great customer support throughout our Rajasthan heritage tour. Will book again.' },
+  { id: 4, name: 'Karan Verma', location: 'Pune, India', rating: 5, avatar: '/testimonials/karan-verma.jpg', review: 'Customized our Switzerland trip exactly around our budget and dates. Truly a hassle-free experience end to end.' },
 ]
 
 export const faqs = [
