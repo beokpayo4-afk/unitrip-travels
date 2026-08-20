@@ -122,4 +122,60 @@ async function searchFlightOffers({ from, to, departureDate, adults = 1, max = 1
   })
 }
 
-module.exports = { searchFlightOffers, resolveLocationCode, getAccessToken }
+async function searchHotelOffers({ destination, checkIn, checkOut, adults = 2 }) {
+  const token = await getAccessToken()
+  const cityCode = await resolveLocationCode(destination)
+
+  const listUrl = new URL(`${AMADEUS_BASE_URL}/v1/reference-data/locations/hotels/by-city`)
+  listUrl.searchParams.set('cityCode', cityCode)
+
+  const listRes = await fetch(listUrl, { headers: { Authorization: `Bearer ${token}` } })
+  if (!listRes.ok) {
+    const body = await listRes.text()
+    const err = new Error(`Amadeus hotel list failed: ${listRes.status} ${body}`)
+    err.statusCode = 502
+    throw err
+  }
+
+  const listData = await listRes.json()
+  const hotelIds = (listData.data || []).slice(0, 15).map((h) => h.hotelId).filter(Boolean)
+  if (!hotelIds.length) return []
+
+  const offersUrl = new URL(`${AMADEUS_BASE_URL}/v3/shopping/hotel-offers`)
+  offersUrl.searchParams.set('hotelIds', hotelIds.join(','))
+  offersUrl.searchParams.set('adults', String(adults))
+  offersUrl.searchParams.set('currencyCode', 'INR')
+  offersUrl.searchParams.set('bestRateOnly', 'true')
+  if (checkIn) offersUrl.searchParams.set('checkInDate', checkIn)
+  if (checkOut) offersUrl.searchParams.set('checkOutDate', checkOut)
+
+  const offersRes = await fetch(offersUrl, { headers: { Authorization: `Bearer ${token}` } })
+  if (!offersRes.ok) {
+    const body = await offersRes.text()
+    const err = new Error(`Amadeus hotel search failed: ${offersRes.status} ${body}`)
+    err.statusCode = 502
+    throw err
+  }
+
+  const offersData = await offersRes.json()
+  const nights = checkIn && checkOut
+    ? Math.max(1, Math.round((new Date(checkOut) - new Date(checkIn)) / 86400000))
+    : 1
+
+  return (offersData.data || []).map((item) => {
+    const offer = item.offers?.[0]
+    const stayTotal = offer?.price?.total ? Number(offer.price.total) : null
+    return {
+      id: item.hotel?.hotelId || offer?.id,
+      name: item.hotel?.name,
+      city: item.hotel?.address?.cityName || destination,
+      address: [item.hotel?.address?.lines?.[0], item.hotel?.address?.cityName].filter(Boolean).join(', '),
+      image: item.hotel?.media?.[0]?.uri || null,
+      pricePerNight: stayTotal != null ? Math.round(stayTotal / nights) : null,
+      rating: item.hotel?.rating ? Number(item.hotel.rating) : null,
+      currency: offer?.price?.currency || 'INR',
+    }
+  }).filter((h) => h.name)
+}
+
+module.exports = { searchFlightOffers, searchHotelOffers, resolveLocationCode, getAccessToken }

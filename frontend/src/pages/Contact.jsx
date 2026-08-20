@@ -1,11 +1,16 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Phone, Mail, MapPin, CheckCircle2 } from 'lucide-react'
 import { submitContact } from '../api/contact.js'
 
-const initial = { name: '', email: '', subject: '', message: '' }
-
 export default function Contact() {
-  const [form, setForm] = useState(initial)
+  const [params] = useSearchParams()
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    subject: params.get('subject') || '',
+    message: '',
+  })
   const [errors, setErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
   const [status, setStatus] = useState(null)
@@ -29,7 +34,7 @@ export default function Contact() {
       // demo fallback
     } finally {
       setStatus('success')
-      setForm(initial)
+      setForm({ name: '', email: '', subject: '', message: '' })
       setSubmitting(false)
     }
   }

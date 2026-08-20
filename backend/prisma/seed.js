@@ -89,8 +89,31 @@ async function main() {
 
   await prisma.hotel.createMany({
     data: [
-      { name: 'The Leela Palace', city: 'Jaipur', pricePerNight: 8500, rating: 4.7, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200' },
-      { name: 'Taj Exotica', city: 'Goa', pricePerNight: 12000, rating: 4.8, image: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=1200' },
+      { name: 'Radisson Blu Noida', city: 'Noida', address: 'Sector 18, Noida', pricePerNight: 6499, rating: 4.4, image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200' },
+      { name: 'The Leela Ambience Gurugram', city: 'Gurugram', address: 'Ambience Island, Gurugram', pricePerNight: 11999, rating: 4.7, image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200' },
+      { name: 'Brijwasi Lands Inn', city: 'Mathura', address: 'Near Prem Mandir, Vrindavan', pricePerNight: 4299, rating: 4.3, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200' },
+      { name: 'Ganga Lahari by Leisure', city: 'Haridwar', address: 'Har Ki Pauri, Haridwar', pricePerNight: 5499, rating: 4.5, image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1200' },
+      { name: 'Aloha On The Ganges', city: 'Rishikesh', address: 'Tapovan, Rishikesh', pricePerNight: 7999, rating: 4.6, image: 'https://images.unsplash.com/photo-1590490360182-c0bd6959d45d?q=80&w=1200' },
+      { name: 'JW Marriott Chandigarh', city: 'Chandigarh', address: 'Sector 35, Chandigarh', pricePerNight: 10999, rating: 4.6, image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200' },
+      { name: 'Oberoi Wildflower Hall', city: 'Shimla', address: 'Mashobra, Shimla', pricePerNight: 18999, rating: 4.8, image: 'https://images.unsplash.com/photo-1590490360182-c0bd6959d45d?q=80&w=1200' },
+      { name: 'Taj Swarna Amritsar', city: 'Amritsar', address: 'Near Golden Temple, Amritsar', pricePerNight: 9999, rating: 4.7, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200' },
+      { name: 'The Leela Palace Jaipur', city: 'Jaipur', address: 'Delhi Road, Jaipur', pricePerNight: 8500, rating: 4.7, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200' },
+      { name: 'Taj Lake Palace', city: 'Udaipur', address: 'Lake Pichola, Udaipur', pricePerNight: 24999, rating: 4.9, image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200' },
+      { name: 'Taj Exotica Goa', city: 'Goa', address: 'Benaulim, South Goa', pricePerNight: 12000, rating: 4.8, image: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=1200' },
+      { name: 'Kumarakom Lake Resort', city: 'Kerala', address: 'Kumarakom, Kottayam', pricePerNight: 15999, rating: 4.8, image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1200' },
+      { name: 'The Himalayan Manali', city: 'Manali', address: 'Hadimba Road, Manali', pricePerNight: 8999, rating: 4.5, image: 'https://images.unsplash.com/photo-1590490360182-c0bd6959d45d?q=80&w=1200' },
+      { name: 'The Lalit Grand Palace', city: 'Srinagar', address: 'Gupkar Road, Srinagar', pricePerNight: 13999, rating: 4.6, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200' },
+      { name: 'The Imperial New Delhi', city: 'Delhi', address: 'Janpath, New Delhi', pricePerNight: 16999, rating: 4.8, image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200' },
+      { name: 'Taj Mahal Palace Mumbai', city: 'Mumbai', address: 'Apollo Bunder, Mumbai', pricePerNight: 18999, rating: 4.9, image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200' },
+      { name: 'The Oberoi Amarvilas', city: 'Agra', address: 'Taj East Gate Road, Agra', pricePerNight: 22999, rating: 4.9, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200' },
+      { name: 'Atlantis The Palm', city: 'Dubai', address: 'Crescent Road, Palm Jumeirah', pricePerNight: 28999, rating: 4.7, image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200' },
+      { name: 'Four Seasons Sayan', city: 'Bali', address: 'Sayan, Ubud', pricePerNight: 24999, rating: 4.8, image: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=1200' },
+      { name: 'Mandarin Oriental Bangkok', city: 'Bangkok', address: 'Chao Phraya River, Bangkok', pricePerNight: 16999, rating: 4.7, image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1200' },
+      { name: 'Marina Bay Sands', city: 'Singapore', address: 'Bayfront Avenue, Singapore', pricePerNight: 32999, rating: 4.8, image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200' },
+      { name: 'Soneva Jani', city: 'Maldives', address: 'Medhufaru, Noonu Atoll', pricePerNight: 79999, rating: 5.0, image: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1200' },
+      { name: "Hôtel de Crillon", city: 'Paris', address: 'Place de la Concorde, Paris', pricePerNight: 45999, rating: 4.8, image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200' },
+      { name: "Badrutt's Palace", city: 'St. Moritz', address: 'Via Serlas, St. Moritz', pricePerNight: 38999, rating: 4.9, image: 'https://images.unsplash.com/photo-1590490360182-c0bd6959d45d?q=80&w=1200' },
+      { name: 'The Savoy', city: 'London', address: 'Strand, London', pricePerNight: 34999, rating: 4.8, image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200' },
     ],
   })
 

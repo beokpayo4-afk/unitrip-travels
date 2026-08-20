@@ -38,6 +38,51 @@ export const popularDestinationIds = ['noida', 'haridwar', 'raj', 'goa', 'dubai'
 export const popularDestinations = [...localDestinations, ...indiaDestinations, ...internationalDestinations].filter(d => popularDestinationIds.includes(d.id))
 
 export const allDestinations = [...localDestinations, ...indiaDestinations, ...internationalDestinations]
+
+const hotelImg = {
+  palace: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop',
+  resort: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=1200&auto=format&fit=crop',
+  pool: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1200&auto=format&fit=crop',
+  luxury: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop',
+  mountain: 'https://images.unsplash.com/photo-1590490360182-c0bd6959d45d?q=80&w=1200&auto=format&fit=crop',
+  city: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop',
+  overwater: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1200&auto=format&fit=crop',
+}
+
+export const hotels = [
+  { id: 'h-noida', name: 'Radisson Blu Noida', city: 'Noida', address: 'Sector 18, Noida', pricePerNight: 6499, rating: 4.4, image: hotelImg.city, keywords: 'noida ncr delhi' },
+  { id: 'h-gurugram', name: 'The Leela Ambience Gurugram', city: 'Gurugram', address: 'Ambience Island, Gurugram', pricePerNight: 11999, rating: 4.7, image: hotelImg.luxury, keywords: 'gurugram gurgaon ncr delhi' },
+  { id: 'h-mathura', name: 'Brijwasi Lands Inn', city: 'Mathura', address: 'Near Prem Mandir, Vrindavan', pricePerNight: 4299, rating: 4.3, image: hotelImg.palace, keywords: 'mathura vrindavan krishna' },
+  { id: 'h-haridwar', name: 'Ganga Lahari by Leisure', city: 'Haridwar', address: 'Har Ki Pauri, Haridwar', pricePerNight: 5499, rating: 4.5, image: hotelImg.pool, keywords: 'haridwar ganga aarti ghat' },
+  { id: 'h-rishikesh', name: 'Aloha On The Ganges', city: 'Rishikesh', address: 'Tapovan, Rishikesh', pricePerNight: 7999, rating: 4.6, image: hotelImg.mountain, keywords: 'rishikesh yoga ganges' },
+  { id: 'h-chandigarh', name: 'JW Marriott Chandigarh', city: 'Chandigarh', address: 'Sector 35, Chandigarh', pricePerNight: 10999, rating: 4.6, image: hotelImg.luxury, keywords: 'chandigarh' },
+  { id: 'h-shimla', name: 'Oberoi Wildflower Hall', city: 'Shimla', address: 'Mashobra, Shimla', pricePerNight: 18999, rating: 4.8, image: hotelImg.mountain, keywords: 'shimla himachal hills' },
+  { id: 'h-amritsar', name: 'Taj Swarna Amritsar', city: 'Amritsar', address: 'Near Golden Temple, Amritsar', pricePerNight: 9999, rating: 4.7, image: hotelImg.palace, keywords: 'amritsar golden temple punjab' },
+  { id: 'h-jaipur', name: 'The Leela Palace Jaipur', city: 'Jaipur', address: 'Delhi Road, Jaipur', pricePerNight: 8500, rating: 4.7, image: hotelImg.palace, keywords: 'jaipur rajasthan' },
+  { id: 'h-udaipur', name: 'Taj Lake Palace', city: 'Udaipur', address: 'Lake Pichola, Udaipur', pricePerNight: 24999, rating: 4.9, image: hotelImg.luxury, keywords: 'udaipur rajasthan lake' },
+  { id: 'h-goa', name: 'Taj Exotica Goa', city: 'Goa', address: 'Benaulim, South Goa', pricePerNight: 12000, rating: 4.8, image: hotelImg.resort, keywords: 'goa beach' },
+  { id: 'h-kerala', name: 'Kumarakom Lake Resort', city: 'Kerala', address: 'Kumarakom, Kottayam', pricePerNight: 15999, rating: 4.8, image: hotelImg.pool, keywords: 'kerala alleppey kochi munnar backwaters' },
+  { id: 'h-manali', name: 'The Himalayan Manali', city: 'Manali', address: 'Hadimba Road, Manali', pricePerNight: 8999, rating: 4.5, image: hotelImg.mountain, keywords: 'manali himachal solang' },
+  { id: 'h-kashmir', name: 'The Lalit Grand Palace', city: 'Srinagar', address: 'Gupkar Road, Srinagar', pricePerNight: 13999, rating: 4.6, image: '/destinations/kashmir.jpg', keywords: 'kashmir srinagar gulmarg' },
+  { id: 'h-delhi', name: 'The Imperial New Delhi', city: 'Delhi', address: 'Janpath, New Delhi', pricePerNight: 16999, rating: 4.8, image: hotelImg.city, keywords: 'delhi new delhi ncr' },
+  { id: 'h-mumbai', name: 'Taj Mahal Palace Mumbai', city: 'Mumbai', address: 'Apollo Bunder, Mumbai', pricePerNight: 18999, rating: 4.9, image: hotelImg.luxury, keywords: 'mumbai bombay' },
+  { id: 'h-agra', name: 'The Oberoi Amarvilas', city: 'Agra', address: 'Taj East Gate Road, Agra', pricePerNight: 22999, rating: 4.9, image: hotelImg.palace, keywords: 'agra taj mahal' },
+  { id: 'h-dubai', name: 'Atlantis The Palm', city: 'Dubai', address: 'Crescent Road, Palm Jumeirah', pricePerNight: 28999, rating: 4.7, image: hotelImg.luxury, keywords: 'dubai uae' },
+  { id: 'h-bali', name: 'Four Seasons Sayan', city: 'Bali', address: 'Sayan, Ubud', pricePerNight: 24999, rating: 4.8, image: hotelImg.resort, keywords: 'bali ubud indonesia' },
+  { id: 'h-thailand', name: 'Mandarin Oriental Bangkok', city: 'Bangkok', address: 'Chao Phraya River, Bangkok', pricePerNight: 16999, rating: 4.7, image: hotelImg.pool, keywords: 'thailand bangkok phuket' },
+  { id: 'h-singapore', name: 'Marina Bay Sands', city: 'Singapore', address: 'Bayfront Avenue, Singapore', pricePerNight: 32999, rating: 4.8, image: hotelImg.city, keywords: 'singapore sentosa' },
+  { id: 'h-maldives', name: 'Soneva Jani', city: 'Maldives', address: 'Medhufaru, Noonu Atoll', pricePerNight: 79999, rating: 5.0, image: hotelImg.overwater, keywords: 'maldives male overwater' },
+  { id: 'h-paris', name: 'Hôtel de Crillon', city: 'Paris', address: 'Place de la Concorde, Paris', pricePerNight: 45999, rating: 4.8, image: hotelImg.luxury, keywords: 'paris france' },
+  { id: 'h-switzerland', name: 'Badrutt\'s Palace', city: 'St. Moritz', address: 'Via Serlas, St. Moritz', pricePerNight: 38999, rating: 4.9, image: hotelImg.mountain, keywords: 'switzerland zurich interlaken lucerne' },
+  { id: 'h-london', name: 'The Savoy', city: 'London', address: 'Strand, London', pricePerNight: 34999, rating: 4.8, image: hotelImg.city, keywords: 'london uk britain' },
+]
+
+export function searchHotelsLocal({ destination } = {}) {
+  const q = String(destination || '').trim().toLowerCase()
+  if (!q) return hotels
+  return hotels.filter((h) => `${h.name} ${h.city} ${h.address || ''} ${h.keywords || ''}`.toLowerCase().includes(q))
+}
+
 export const destinationGroups = [
   { key: 'local', label: 'Local', items: localDestinations },
   { key: 'india', label: 'India', items: indiaDestinations },

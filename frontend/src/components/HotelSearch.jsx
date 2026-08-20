@@ -1,24 +1,64 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { MapPin, Calendar, Users, Search, Hotel } from 'lucide-react'
 import { searchHotels } from '../api/hotelsFlights.js'
+import { allDestinations, searchHotelsLocal } from '../data/seedData.js'
 
-export default function HotelSearch({ onResults }) {
+function nightsBetween(checkIn, checkOut) {
+  if (!checkIn || !checkOut) return 1
+  const ms = new Date(checkOut) - new Date(checkIn)
+  return Math.max(1, Math.round(ms / 86400000))
+}
+
+export default function HotelSearch({ onResults, onSearchingChange, onError, onQueryChange }) {
+  const navigate = useNavigate()
   const [form, setForm] = useState({ destination: '', checkIn: '', checkOut: '', guests: 2 })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  const deliver = (data) => {
+    const payload = Array.isArray(data) ? data : []
+    const query = { ...form, nights: nightsBetween(form.checkIn, form.checkOut) }
+    onQueryChange?.(query)
+    onResults?.(payload)
+    if (!onResults) {
+      navigate('/hotels', { state: { results: payload, query } })
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (form.checkOut <= form.checkIn) {
+      const message = 'Check-out must be after check-in.'
+      setError(message)
+      onError?.(message)
+      return
+    }
     setLoading(true)
     setError('')
+    onError?.('')
+    onSearchingChange?.(true)
+    onResults?.(null)
     try {
       const { data } = await searchHotels(form)
-      onResults?.(data)
-    } catch (err) {
-      setError('Hotel search API is not connected yet. This interface is ready for a live inventory integration.')
-      onResults?.([])
+      if (Array.isArray(data) && data.length) {
+        deliver(data)
+        return
+      }
+      deliver(searchHotelsLocal(form))
+    } catch {
+      const local = searchHotelsLocal(form)
+      if (local.length) {
+        deliver(local)
+        return
+      }
+      const message = 'No hotels found for this destination. Try another city.'
+      setError(message)
+      onError?.(message)
+      deliver([])
     } finally {
       setLoading(false)
+      onSearchingChange?.(false)
     }
   }
 
@@ -31,8 +71,19 @@ export default function HotelSearch({ onResults }) {
       <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="sm:col-span-2">
           <label className="text-xs font-semibold text-charcoal/60 mb-1.5 flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> Destination</label>
-          <input value={form.destination} onChange={(e) => setForm({ ...form, destination: e.target.value })} placeholder="City or hotel name" required
-            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50" />
+          <input
+            value={form.destination}
+            onChange={(e) => setForm({ ...form, destination: e.target.value })}
+            placeholder="City or hotel name"
+            list="hotel-destinations"
+            required
+            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+          />
+          <datalist id="hotel-destinations">
+            {allDestinations.map((d) => (
+              <option key={d.id} value={d.name} />
+            ))}
+          </datalist>
         </div>
         <div>
           <label className="text-xs font-semibold text-charcoal/60 mb-1.5 flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> Check-in</label>
