@@ -17,6 +17,13 @@ export default function HotelResultCard({ hotel, nights = 1 }) {
       </div>
       <div className="p-5 flex flex-col flex-1 gap-3">
         <div>
+          <div className="flex items-center gap-2 mb-1">
+            {hotel.type && (
+              <span className="text-[10px] font-semibold uppercase tracking-wide text-gold bg-gold/10 px-2 py-0.5 rounded-full">
+                {hotel.type}
+              </span>
+            )}
+          </div>
           <h3 className="font-heading font-semibold text-lg text-navy">{hotel.name}</h3>
           <p className="text-xs text-charcoal/60 mt-1 flex items-center gap-1">
             <MapPin className="w-3.5 h-3.5 text-gold" />

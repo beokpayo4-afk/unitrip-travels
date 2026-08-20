@@ -91,7 +91,11 @@ async function main() {
     data: [
       { name: 'Radisson Blu Noida', city: 'Noida', address: 'Sector 18, Noida', pricePerNight: 6499, rating: 4.4, image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200' },
       { name: 'The Leela Ambience Gurugram', city: 'Gurugram', address: 'Ambience Island, Gurugram', pricePerNight: 11999, rating: 4.7, image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200' },
+      { name: 'Trident Gurugram', city: 'Gurugram', address: 'Cyber City, Gurugram', pricePerNight: 8999, rating: 4.5, image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200' },
+      { name: 'Lemon Tree Premier Gurugram', city: 'Gurugram', address: 'Sector 29, Gurugram', pricePerNight: 5499, rating: 4.2, image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=1200' },
       { name: 'Brijwasi Lands Inn', city: 'Mathura', address: 'Near Prem Mandir, Vrindavan', pricePerNight: 4299, rating: 4.3, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200' },
+      { name: 'Nidhivan Sarovar Portico', city: 'Mathura', address: 'Banke Bihari Road, Vrindavan', pricePerNight: 5999, rating: 4.4, image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1200' },
+      { name: 'Hotel Brijwasi Royal', city: 'Mathura', address: 'Bhuteshwar Road, Mathura', pricePerNight: 2799, rating: 4.0, image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=1200' },
       { name: 'Ganga Lahari by Leisure', city: 'Haridwar', address: 'Har Ki Pauri, Haridwar', pricePerNight: 5499, rating: 4.5, image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1200' },
       { name: 'Aloha On The Ganges', city: 'Rishikesh', address: 'Tapovan, Rishikesh', pricePerNight: 7999, rating: 4.6, image: 'https://images.unsplash.com/photo-1590490360182-c0bd6959d45d?q=80&w=1200' },
       { name: 'JW Marriott Chandigarh', city: 'Chandigarh', address: 'Sector 35, Chandigarh', pricePerNight: 10999, rating: 4.6, image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200' },

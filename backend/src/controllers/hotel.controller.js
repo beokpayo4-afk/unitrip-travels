@@ -23,7 +23,7 @@ async function searchLocalHotels(destination) {
         ],
       }
     : {}
-  const hotels = await prisma.hotel.findMany({ where, take: 20, orderBy: { rating: 'desc' } })
+  const hotels = await prisma.hotel.findMany({ where, take: 40, orderBy: { rating: 'desc' } })
   return hotels.map(mapCatalogueHotel)
 }
 
@@ -34,6 +34,7 @@ async function searchHotels(req, res, next) {
       return res.status(400).json({ message: 'destination is required' })
     }
 
+    const local = await searchLocalHotels(destination)
     try {
       const live = await searchHotelOffers({
         destination,
@@ -41,12 +42,15 @@ async function searchHotels(req, res, next) {
         checkOut,
         adults: Number(guests) || 2,
       })
-      if (live.length) return res.json(live)
+      if (live.length) {
+        const seen = new Set(live.map((h) => `${String(h.name || '').toLowerCase()}|${String(h.city || '').toLowerCase()}`))
+        const extra = local.filter((h) => !seen.has(`${String(h.name || '').toLowerCase()}|${String(h.city || '').toLowerCase()}`))
+        return res.json([...live, ...extra])
+      }
     } catch (err) {
       console.error('Live hotel search unavailable:', err.message)
     }
 
-    const local = await searchLocalHotels(destination)
     res.json(local)
   } catch (err) { next(err) }
 }

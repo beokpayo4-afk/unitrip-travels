@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MapPin, Calendar, Users, Search, Hotel } from 'lucide-react'
 import { searchHotels } from '../api/hotelsFlights.js'
-import { allDestinations, searchHotelsLocal } from '../data/seedData.js'
+import { allDestinations, mergeHotelResults, searchHotelsLocal } from '../data/seedData.js'
 
 function nightsBetween(checkIn, checkOut) {
   if (!checkIn || !checkOut) return 1
@@ -41,11 +41,14 @@ export default function HotelSearch({ onResults, onSearchingChange, onError, onQ
     onResults?.(null)
     try {
       const { data } = await searchHotels(form)
-      if (Array.isArray(data) && data.length) {
-        deliver(data)
-        return
+      const live = Array.isArray(data) ? data : []
+      const merged = mergeHotelResults(live, searchHotelsLocal(form))
+      if (!merged.length) {
+        const message = 'No hotels found for this destination. Try another city.'
+        setError(message)
+        onError?.(message)
       }
-      deliver(searchHotelsLocal(form))
+      deliver(merged)
     } catch {
       const local = searchHotelsLocal(form)
       if (local.length) {

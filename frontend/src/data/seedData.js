@@ -46,41 +46,164 @@ const hotelImg = {
   luxury: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop',
   mountain: 'https://images.unsplash.com/photo-1590490360182-c0bd6959d45d?q=80&w=1200&auto=format&fit=crop',
   city: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop',
+  boutique: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=1200&auto=format&fit=crop',
   overwater: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1200&auto=format&fit=crop',
 }
 
-export const hotels = [
-  { id: 'h-noida', name: 'Radisson Blu Noida', city: 'Noida', address: 'Sector 18, Noida', pricePerNight: 6499, rating: 4.4, image: hotelImg.city, keywords: 'noida ncr delhi' },
-  { id: 'h-gurugram', name: 'The Leela Ambience Gurugram', city: 'Gurugram', address: 'Ambience Island, Gurugram', pricePerNight: 11999, rating: 4.7, image: hotelImg.luxury, keywords: 'gurugram gurgaon ncr delhi' },
-  { id: 'h-mathura', name: 'Brijwasi Lands Inn', city: 'Mathura', address: 'Near Prem Mandir, Vrindavan', pricePerNight: 4299, rating: 4.3, image: hotelImg.palace, keywords: 'mathura vrindavan krishna' },
-  { id: 'h-haridwar', name: 'Ganga Lahari by Leisure', city: 'Haridwar', address: 'Har Ki Pauri, Haridwar', pricePerNight: 5499, rating: 4.5, image: hotelImg.pool, keywords: 'haridwar ganga aarti ghat' },
-  { id: 'h-rishikesh', name: 'Aloha On The Ganges', city: 'Rishikesh', address: 'Tapovan, Rishikesh', pricePerNight: 7999, rating: 4.6, image: hotelImg.mountain, keywords: 'rishikesh yoga ganges' },
-  { id: 'h-chandigarh', name: 'JW Marriott Chandigarh', city: 'Chandigarh', address: 'Sector 35, Chandigarh', pricePerNight: 10999, rating: 4.6, image: hotelImg.luxury, keywords: 'chandigarh' },
-  { id: 'h-shimla', name: 'Oberoi Wildflower Hall', city: 'Shimla', address: 'Mashobra, Shimla', pricePerNight: 18999, rating: 4.8, image: hotelImg.mountain, keywords: 'shimla himachal hills' },
-  { id: 'h-amritsar', name: 'Taj Swarna Amritsar', city: 'Amritsar', address: 'Near Golden Temple, Amritsar', pricePerNight: 9999, rating: 4.7, image: hotelImg.palace, keywords: 'amritsar golden temple punjab' },
-  { id: 'h-jaipur', name: 'The Leela Palace Jaipur', city: 'Jaipur', address: 'Delhi Road, Jaipur', pricePerNight: 8500, rating: 4.7, image: hotelImg.palace, keywords: 'jaipur rajasthan' },
-  { id: 'h-udaipur', name: 'Taj Lake Palace', city: 'Udaipur', address: 'Lake Pichola, Udaipur', pricePerNight: 24999, rating: 4.9, image: hotelImg.luxury, keywords: 'udaipur rajasthan lake' },
-  { id: 'h-goa', name: 'Taj Exotica Goa', city: 'Goa', address: 'Benaulim, South Goa', pricePerNight: 12000, rating: 4.8, image: hotelImg.resort, keywords: 'goa beach' },
-  { id: 'h-kerala', name: 'Kumarakom Lake Resort', city: 'Kerala', address: 'Kumarakom, Kottayam', pricePerNight: 15999, rating: 4.8, image: hotelImg.pool, keywords: 'kerala alleppey kochi munnar backwaters' },
-  { id: 'h-manali', name: 'The Himalayan Manali', city: 'Manali', address: 'Hadimba Road, Manali', pricePerNight: 8999, rating: 4.5, image: hotelImg.mountain, keywords: 'manali himachal solang' },
-  { id: 'h-kashmir', name: 'The Lalit Grand Palace', city: 'Srinagar', address: 'Gupkar Road, Srinagar', pricePerNight: 13999, rating: 4.6, image: '/destinations/kashmir.jpg', keywords: 'kashmir srinagar gulmarg' },
-  { id: 'h-delhi', name: 'The Imperial New Delhi', city: 'Delhi', address: 'Janpath, New Delhi', pricePerNight: 16999, rating: 4.8, image: hotelImg.city, keywords: 'delhi new delhi ncr' },
-  { id: 'h-mumbai', name: 'Taj Mahal Palace Mumbai', city: 'Mumbai', address: 'Apollo Bunder, Mumbai', pricePerNight: 18999, rating: 4.9, image: hotelImg.luxury, keywords: 'mumbai bombay' },
-  { id: 'h-agra', name: 'The Oberoi Amarvilas', city: 'Agra', address: 'Taj East Gate Road, Agra', pricePerNight: 22999, rating: 4.9, image: hotelImg.palace, keywords: 'agra taj mahal' },
-  { id: 'h-dubai', name: 'Atlantis The Palm', city: 'Dubai', address: 'Crescent Road, Palm Jumeirah', pricePerNight: 28999, rating: 4.7, image: hotelImg.luxury, keywords: 'dubai uae' },
-  { id: 'h-bali', name: 'Four Seasons Sayan', city: 'Bali', address: 'Sayan, Ubud', pricePerNight: 24999, rating: 4.8, image: hotelImg.resort, keywords: 'bali ubud indonesia' },
-  { id: 'h-thailand', name: 'Mandarin Oriental Bangkok', city: 'Bangkok', address: 'Chao Phraya River, Bangkok', pricePerNight: 16999, rating: 4.7, image: hotelImg.pool, keywords: 'thailand bangkok phuket' },
-  { id: 'h-singapore', name: 'Marina Bay Sands', city: 'Singapore', address: 'Bayfront Avenue, Singapore', pricePerNight: 32999, rating: 4.8, image: hotelImg.city, keywords: 'singapore sentosa' },
-  { id: 'h-maldives', name: 'Soneva Jani', city: 'Maldives', address: 'Medhufaru, Noonu Atoll', pricePerNight: 79999, rating: 5.0, image: hotelImg.overwater, keywords: 'maldives male overwater' },
-  { id: 'h-paris', name: 'Hôtel de Crillon', city: 'Paris', address: 'Place de la Concorde, Paris', pricePerNight: 45999, rating: 4.8, image: hotelImg.luxury, keywords: 'paris france' },
-  { id: 'h-switzerland', name: 'Badrutt\'s Palace', city: 'St. Moritz', address: 'Via Serlas, St. Moritz', pricePerNight: 38999, rating: 4.9, image: hotelImg.mountain, keywords: 'switzerland zurich interlaken lucerne' },
-  { id: 'h-london', name: 'The Savoy', city: 'London', address: 'Strand, London', pricePerNight: 34999, rating: 4.8, image: hotelImg.city, keywords: 'london uk britain' },
+const hotelGroups = [
+  { id: 'noida', city: 'Noida', keywords: 'noida ncr delhi', stays: [
+    { name: 'Radisson Blu Noida', address: 'Sector 18, Noida', pricePerNight: 6499, rating: 4.4, type: 'Business', image: hotelImg.city },
+    { name: 'Crowne Plaza Greater Noida', address: 'Knowledge Park, Greater Noida', pricePerNight: 5299, rating: 4.3, type: 'Mid-range', image: hotelImg.boutique },
+    { name: 'Savoy Suites Noida', address: 'Sector 16, Noida', pricePerNight: 3899, rating: 4.1, type: 'Value', image: hotelImg.pool },
+  ]},
+  { id: 'gurugram', city: 'Gurugram', keywords: 'gurugram gurgaon ncr delhi', stays: [
+    { name: 'The Leela Ambience Gurugram', address: 'Ambience Island, Gurugram', pricePerNight: 11999, rating: 4.7, type: 'Luxury', image: hotelImg.luxury },
+    { name: 'Trident Gurugram', address: 'Cyber City, Gurugram', pricePerNight: 8999, rating: 4.5, type: 'Business', image: hotelImg.city },
+    { name: 'Lemon Tree Premier Gurugram', address: 'Sector 29, Gurugram', pricePerNight: 5499, rating: 4.2, type: 'Mid-range', image: hotelImg.boutique },
+  ]},
+  { id: 'mathura', city: 'Mathura', keywords: 'mathura vrindavan krishna', stays: [
+    { name: 'Brijwasi Lands Inn', address: 'Near Prem Mandir, Vrindavan', pricePerNight: 4299, rating: 4.3, type: 'Heritage', image: hotelImg.palace },
+    { name: 'Nidhivan Sarovar Portico', address: 'Banke Bihari Road, Vrindavan', pricePerNight: 5999, rating: 4.4, type: 'Mid-range', image: hotelImg.pool },
+    { name: 'Hotel Brijwasi Royal', address: 'Bhuteshwar Road, Mathura', pricePerNight: 2799, rating: 4.0, type: 'Value', image: hotelImg.boutique },
+  ]},
+  { id: 'haridwar', city: 'Haridwar', keywords: 'haridwar ganga aarti ghat', stays: [
+    { name: 'Ganga Lahari by Leisure', address: 'Har Ki Pauri, Haridwar', pricePerNight: 5499, rating: 4.5, type: 'Riverside', image: hotelImg.pool },
+    { name: 'Radisson Blu Haridwar', address: 'Industrial Area, Haridwar', pricePerNight: 6999, rating: 4.4, type: 'Business', image: hotelImg.city },
+    { name: 'Godwin Hotel Haridwar', address: 'Railway Road, Haridwar', pricePerNight: 3299, rating: 4.1, type: 'Value', image: hotelImg.boutique },
+  ]},
+  { id: 'rishikesh', city: 'Rishikesh', keywords: 'rishikesh yoga ganges', stays: [
+    { name: 'Aloha On The Ganges', address: 'Tapovan, Rishikesh', pricePerNight: 7999, rating: 4.6, type: 'Riverside', image: hotelImg.mountain },
+    { name: 'Ananda in the Himalayas', address: 'Narendranagar, Rishikesh', pricePerNight: 28999, rating: 4.9, type: 'Luxury', image: hotelImg.luxury },
+    { name: 'The Hosteller Rishikesh', address: 'Laxman Jhula, Rishikesh', pricePerNight: 2499, rating: 4.2, type: 'Value', image: hotelImg.boutique },
+  ]},
+  { id: 'chandigarh', city: 'Chandigarh', keywords: 'chandigarh', stays: [
+    { name: 'JW Marriott Chandigarh', address: 'Sector 35, Chandigarh', pricePerNight: 10999, rating: 4.6, type: 'Luxury', image: hotelImg.luxury },
+    { name: 'Hyatt Regency Chandigarh', address: 'Industrial Area, Chandigarh', pricePerNight: 8499, rating: 4.5, type: 'Business', image: hotelImg.city },
+    { name: 'Hotel Shivalikview', address: 'Sector 17, Chandigarh', pricePerNight: 4599, rating: 4.1, type: 'Mid-range', image: hotelImg.boutique },
+  ]},
+  { id: 'shimla', city: 'Shimla', keywords: 'shimla himachal hills', stays: [
+    { name: 'Oberoi Wildflower Hall', address: 'Mashobra, Shimla', pricePerNight: 18999, rating: 4.8, type: 'Luxury', image: hotelImg.mountain },
+    { name: 'The Oberoi Cecil', address: 'Chaura Maidan, Shimla', pricePerNight: 12999, rating: 4.6, type: 'Heritage', image: hotelImg.palace },
+    { name: 'Clarkes Hotel Shimla', address: 'The Mall, Shimla', pricePerNight: 6999, rating: 4.3, type: 'Mid-range', image: hotelImg.boutique },
+  ]},
+  { id: 'amritsar', city: 'Amritsar', keywords: 'amritsar golden temple punjab', stays: [
+    { name: 'Taj Swarna Amritsar', address: 'Near Golden Temple, Amritsar', pricePerNight: 9999, rating: 4.7, type: 'Luxury', image: hotelImg.palace },
+    { name: 'Hyatt Amritsar', address: 'Mall Road, Amritsar', pricePerNight: 7499, rating: 4.5, type: 'Business', image: hotelImg.city },
+    { name: 'Ramada Amritsar', address: 'Ranjit Avenue, Amritsar', pricePerNight: 4999, rating: 4.2, type: 'Mid-range', image: hotelImg.pool },
+  ]},
+  { id: 'jaipur', city: 'Jaipur', keywords: 'jaipur rajasthan', stays: [
+    { name: 'The Leela Palace Jaipur', address: 'Delhi Road, Jaipur', pricePerNight: 8500, rating: 4.7, type: 'Luxury', image: hotelImg.palace },
+    { name: 'Rambagh Palace', address: 'Bhawani Singh Road, Jaipur', pricePerNight: 22999, rating: 4.9, type: 'Heritage', image: hotelImg.luxury },
+    { name: 'ITC Rajputana Jaipur', address: 'Palace Road, Jaipur', pricePerNight: 7999, rating: 4.4, type: 'Mid-range', image: hotelImg.city },
+  ]},
+  { id: 'udaipur', city: 'Udaipur', keywords: 'udaipur rajasthan lake', stays: [
+    { name: 'Taj Lake Palace', address: 'Lake Pichola, Udaipur', pricePerNight: 24999, rating: 4.9, type: 'Luxury', image: hotelImg.luxury },
+    { name: 'The Oberoi Udaivilas', address: 'Haridasji Ki Magri, Udaipur', pricePerNight: 31999, rating: 4.9, type: 'Luxury', image: hotelImg.palace },
+    { name: 'Trident Udaipur', address: 'Mewar Palace, Udaipur', pricePerNight: 8999, rating: 4.5, type: 'Mid-range', image: hotelImg.pool },
+  ]},
+  { id: 'goa', city: 'Goa', keywords: 'goa beach', stays: [
+    { name: 'Taj Exotica Goa', address: 'Benaulim, South Goa', pricePerNight: 12000, rating: 4.8, type: 'Luxury', image: hotelImg.resort },
+    { name: 'W Goa', address: 'Vagator, North Goa', pricePerNight: 15999, rating: 4.6, type: 'Resort', image: hotelImg.pool },
+    { name: 'Alila Diwa Goa', address: 'Majorda, South Goa', pricePerNight: 9999, rating: 4.5, type: 'Boutique', image: hotelImg.boutique },
+  ]},
+  { id: 'kerala', city: 'Kerala', keywords: 'kerala alleppey kochi munnar backwaters', stays: [
+    { name: 'Kumarakom Lake Resort', address: 'Kumarakom, Kottayam', pricePerNight: 15999, rating: 4.8, type: 'Luxury', image: hotelImg.pool },
+    { name: 'Taj Malabar Resort & Spa', address: 'Willingdon Island, Kochi', pricePerNight: 11999, rating: 4.6, type: 'Heritage', image: hotelImg.luxury },
+    { name: 'Spice Tree Munnar', address: 'Chithirapuram, Munnar', pricePerNight: 8499, rating: 4.4, type: 'Boutique', image: hotelImg.mountain },
+  ]},
+  { id: 'manali', city: 'Manali', keywords: 'manali himachal solang', stays: [
+    { name: 'The Himalayan Manali', address: 'Hadimba Road, Manali', pricePerNight: 8999, rating: 4.5, type: 'Boutique', image: hotelImg.mountain },
+    { name: 'Span Resort & Spa', address: 'Kullu Road, Manali', pricePerNight: 12999, rating: 4.6, type: 'Luxury', image: hotelImg.luxury },
+    { name: 'Johnson Lodge Manali', address: 'Circuit House Road, Manali', pricePerNight: 4599, rating: 4.2, type: 'Value', image: hotelImg.boutique },
+  ]},
+  { id: 'kashmir', city: 'Srinagar', keywords: 'kashmir srinagar gulmarg', stays: [
+    { name: 'The Lalit Grand Palace', address: 'Gupkar Road, Srinagar', pricePerNight: 13999, rating: 4.6, type: 'Heritage', image: '/destinations/kashmir.jpg' },
+    { name: 'Vivanta Dal View', address: 'Kralsangri, Srinagar', pricePerNight: 11999, rating: 4.5, type: 'Luxury', image: hotelImg.luxury },
+    { name: 'Khyber Himalayan Resort', address: 'Gulmarg', pricePerNight: 16999, rating: 4.7, type: 'Resort', image: hotelImg.mountain },
+  ]},
+  { id: 'delhi', city: 'Delhi', keywords: 'delhi new delhi ncr', stays: [
+    { name: 'The Imperial New Delhi', address: 'Janpath, New Delhi', pricePerNight: 16999, rating: 4.8, type: 'Luxury', image: hotelImg.city },
+    { name: 'The Lodhi New Delhi', address: 'Lodhi Road, New Delhi', pricePerNight: 21999, rating: 4.7, type: 'Luxury', image: hotelImg.luxury },
+    { name: 'Bloomrooms @ New Delhi', address: 'Paharganj, New Delhi', pricePerNight: 3299, rating: 4.1, type: 'Value', image: hotelImg.boutique },
+  ]},
+  { id: 'mumbai', city: 'Mumbai', keywords: 'mumbai bombay', stays: [
+    { name: 'Taj Mahal Palace Mumbai', address: 'Apollo Bunder, Mumbai', pricePerNight: 18999, rating: 4.9, type: 'Luxury', image: hotelImg.luxury },
+    { name: 'The St. Regis Mumbai', address: 'Lower Parel, Mumbai', pricePerNight: 16999, rating: 4.7, type: 'Luxury', image: hotelImg.city },
+    { name: 'Trident Nariman Point', address: 'Nariman Point, Mumbai', pricePerNight: 11999, rating: 4.5, type: 'Business', image: hotelImg.pool },
+  ]},
+  { id: 'agra', city: 'Agra', keywords: 'agra taj mahal', stays: [
+    { name: 'The Oberoi Amarvilas', address: 'Taj East Gate Road, Agra', pricePerNight: 22999, rating: 4.9, type: 'Luxury', image: hotelImg.palace },
+    { name: 'ITC Mughal Agra', address: 'Taj Ganj, Agra', pricePerNight: 9999, rating: 4.6, type: 'Heritage', image: hotelImg.luxury },
+    { name: 'Trident Agra', address: 'Fatehabad Road, Agra', pricePerNight: 7499, rating: 4.4, type: 'Mid-range', image: hotelImg.pool },
+  ]},
+  { id: 'dubai', city: 'Dubai', keywords: 'dubai uae', stays: [
+    { name: 'Atlantis The Palm', address: 'Crescent Road, Palm Jumeirah', pricePerNight: 28999, rating: 4.7, type: 'Luxury', image: hotelImg.luxury },
+    { name: 'Burj Al Arab Jumeirah', address: 'Jumeirah Beach, Dubai', pricePerNight: 89999, rating: 4.9, type: 'Luxury', image: hotelImg.city },
+    { name: 'Rove Downtown Dubai', address: 'Downtown Dubai', pricePerNight: 9999, rating: 4.3, type: 'Mid-range', image: hotelImg.boutique },
+  ]},
+  { id: 'bali', city: 'Bali', keywords: 'bali ubud indonesia', stays: [
+    { name: 'Four Seasons Sayan', address: 'Sayan, Ubud', pricePerNight: 24999, rating: 4.8, type: 'Luxury', image: hotelImg.resort },
+    { name: 'COMO Uma Ubud', address: 'Banjar Payogan, Ubud', pricePerNight: 18999, rating: 4.7, type: 'Boutique', image: hotelImg.pool },
+    { name: 'Potato Head Studios', address: 'Seminyak, Bali', pricePerNight: 12999, rating: 4.5, type: 'Resort', image: hotelImg.boutique },
+  ]},
+  { id: 'thailand', city: 'Bangkok', keywords: 'thailand bangkok phuket', stays: [
+    { name: 'Mandarin Oriental Bangkok', address: 'Chao Phraya River, Bangkok', pricePerNight: 16999, rating: 4.7, type: 'Luxury', image: hotelImg.pool },
+    { name: 'The Siam Bangkok', address: 'Dusit, Bangkok', pricePerNight: 21999, rating: 4.8, type: 'Boutique', image: hotelImg.luxury },
+    { name: 'Amari Phuket', address: 'Patong Beach, Phuket', pricePerNight: 8999, rating: 4.4, type: 'Resort', image: hotelImg.resort },
+  ]},
+  { id: 'singapore', city: 'Singapore', keywords: 'singapore sentosa', stays: [
+    { name: 'Marina Bay Sands', address: 'Bayfront Avenue, Singapore', pricePerNight: 32999, rating: 4.8, type: 'Luxury', image: hotelImg.city },
+    { name: 'Raffles Singapore', address: 'Beach Road, Singapore', pricePerNight: 38999, rating: 4.9, type: 'Heritage', image: hotelImg.luxury },
+    { name: 'Parkroyal Collection Pickering', address: 'Upper Pickering Street', pricePerNight: 18999, rating: 4.6, type: 'Boutique', image: hotelImg.pool },
+  ]},
+  { id: 'maldives', city: 'Maldives', keywords: 'maldives male overwater', stays: [
+    { name: 'Soneva Jani', address: 'Medhufaru, Noonu Atoll', pricePerNight: 79999, rating: 5.0, type: 'Luxury', image: hotelImg.overwater },
+    { name: 'Conrad Maldives Rangali', address: 'Rangali Island', pricePerNight: 54999, rating: 4.8, type: 'Resort', image: hotelImg.resort },
+    { name: 'Kurumba Maldives', address: 'Vihamanaafushi', pricePerNight: 28999, rating: 4.5, type: 'Mid-range', image: hotelImg.pool },
+  ]},
+  { id: 'paris', city: 'Paris', keywords: 'paris france', stays: [
+    { name: 'Hôtel de Crillon', address: 'Place de la Concorde, Paris', pricePerNight: 45999, rating: 4.8, type: 'Luxury', image: hotelImg.luxury },
+    { name: 'Le Bristol Paris', address: 'Rue du Faubourg Saint-Honoré', pricePerNight: 52999, rating: 4.9, type: 'Luxury', image: hotelImg.palace },
+    { name: 'Hôtel Malte Opera', address: 'Rue de Richelieu, Paris', pricePerNight: 18999, rating: 4.3, type: 'Boutique', image: hotelImg.boutique },
+  ]},
+  { id: 'switzerland', city: 'Switzerland', keywords: 'switzerland zurich interlaken lucerne st moritz', stays: [
+    { name: "Badrutt's Palace", address: 'Via Serlas, St. Moritz', pricePerNight: 38999, rating: 4.9, type: 'Luxury', image: hotelImg.mountain },
+    { name: 'The Dolder Grand', address: 'Zurich', pricePerNight: 42999, rating: 4.8, type: 'Luxury', image: hotelImg.luxury },
+    { name: 'Victoria-Jungfrau Interlaken', address: 'Höheweg, Interlaken', pricePerNight: 27999, rating: 4.6, type: 'Heritage', image: hotelImg.palace },
+  ]},
+  { id: 'london', city: 'London', keywords: 'london uk britain', stays: [
+    { name: 'The Savoy', address: 'Strand, London', pricePerNight: 34999, rating: 4.8, type: 'Luxury', image: hotelImg.city },
+    { name: 'The Ritz London', address: 'Piccadilly, London', pricePerNight: 49999, rating: 4.9, type: 'Luxury', image: hotelImg.palace },
+    { name: 'The Hoxton Shoreditch', address: 'Shoreditch, London', pricePerNight: 18999, rating: 4.4, type: 'Boutique', image: hotelImg.boutique },
+  ]},
 ]
+
+export const hotels = hotelGroups.flatMap((group) =>
+  group.stays.map((stay, index) => ({
+    id: `h-${group.id}-${index + 1}`,
+    city: group.city,
+    keywords: group.keywords,
+    currency: 'INR',
+    ...stay,
+  })),
+)
 
 export function searchHotelsLocal({ destination } = {}) {
   const q = String(destination || '').trim().toLowerCase()
   if (!q) return hotels
   return hotels.filter((h) => `${h.name} ${h.city} ${h.address || ''} ${h.keywords || ''}`.toLowerCase().includes(q))
+}
+
+export function mergeHotelResults(primary = [], fallback = []) {
+  const seen = new Set()
+  const merged = []
+  for (const hotel of [...primary, ...fallback]) {
+    const key = `${String(hotel.name || '').toLowerCase()}|${String(hotel.city || '').toLowerCase()}`
+    if (!hotel.name || seen.has(key)) continue
+    seen.add(key)
+    merged.push(hotel)
+  }
+  return merged
 }
 
 export const destinationGroups = [
