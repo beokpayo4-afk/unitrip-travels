@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #22262B;
+  background-color: #FAF8F5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', 'Manrope', sans-serif;
+}
+
+.container-x {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-dark text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-soft hover:shadow-card;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 border-2 border-white text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:bg-white hover:text-navy;
+}
+
+.btn-navy {
+  @apply inline-flex items-center justify-center gap-2 bg-navy hover:bg-navy-light text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-soft hover:shadow-card;
+}
+
+.section-heading-eyebrow {
+  @apply text-gold font-semibold tracking-wide uppercase text-sm;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
