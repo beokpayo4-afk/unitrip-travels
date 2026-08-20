@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'Tour Packages', to: '/tour-packages' },
   { label: 'Hotels', to: '/hotels' },
   { label: 'Flights', to: '/flights' },
+  { label: 'Group Tickets', to: '/group-tickets' },
   { label: 'Contact', to: '/contact' },
 ]
 

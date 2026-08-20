@@ -29,7 +29,8 @@ export default function Footer() {
           <ul className="space-y-2.5 text-sm">
             {[
               ['Home', '/'], ['About', '/about'], ['Destinations', '/destinations'],
-              ['Tour Packages', '/tour-packages'], ['Hotels', '/hotels'], ['Flights', '/flights'], ['Contact', '/contact'],
+              ['Tour Packages', '/tour-packages'], ['Hotels', '/hotels'], ['Flights', '/flights'],
+              ['Group Tickets', '/group-tickets'], ['Contact', '/contact'],
             ].map(([label, to]) => (
               <li key={to}><Link to={to} className="hover:text-gold transition-colors">{label}</Link></li>
             ))}

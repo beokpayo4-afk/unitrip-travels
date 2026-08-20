@@ -14,6 +14,7 @@ import TestimonialCard from '../components/TestimonialCard.jsx'
 import CTASection from '../components/CTASection.jsx'
 import HotelSearch from '../components/HotelSearch.jsx'
 import FlightSearch from '../components/FlightSearch.jsx'
+import GroupTicketService from '../components/GroupTicketService.jsx'
 
 import { indiaDestinations, internationalDestinations, tourPackages, testimonials } from '../data/seedData.js'
 
@@ -23,7 +24,7 @@ const features = [
   { icon: ShieldCheck, title: 'Trusted Service', description: 'Reliable travel partners and verified services.' },
   { icon: Headset, title: '24/7 Support', description: 'Help whenever you need it.' },
   { icon: Globe2, title: 'Domestic & International', description: 'Travel across India and around the world.' },
-  { icon: Ticket, title: 'Easy Booking', description: 'Simple inquiry and booking process.' },
+  { icon: Ticket, title: 'Group Tickets', description: 'Ticket sizes from 100 to 1,000 for corporate, events and large groups.' },
 ]
 
 function SectionHeader({ eyebrow, title, description }) {
@@ -104,6 +105,7 @@ export default function Home() {
         </div>
       </section>
 
+      <GroupTicketService />
       <HowItWorks />
       <CustomizedTripCTA />
 

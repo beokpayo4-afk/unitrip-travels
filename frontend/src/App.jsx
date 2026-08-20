@@ -10,6 +10,7 @@ import TourDetails from './pages/TourDetails.jsx'
 import Hotels from './pages/Hotels.jsx'
 import Flights from './pages/Flights.jsx'
 import CustomizedTrip from './pages/CustomizedTrip.jsx'
+import GroupTickets from './pages/GroupTickets.jsx'
 import Contact from './pages/Contact.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="/hotels" element={<Hotels />} />
           <Route path="/flights" element={<Flights />} />
           <Route path="/customized-trip" element={<CustomizedTrip />} />
+          <Route path="/group-tickets" element={<GroupTickets />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

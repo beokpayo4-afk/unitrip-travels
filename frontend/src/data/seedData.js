@@ -45,6 +45,8 @@ export const tourPackages = [
 
 export const tourCategories = ['domestic', 'international', 'honeymoon', 'family', 'adventure', 'luxury', 'weekend', 'group']
 
+export const ticketSizes = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+
 export const tourItinerary = {
   t1: [
     { day: 1, title: 'Arrival in Jaipur', desc: 'Check in to hotel, evening visit to local bazaars.' },
