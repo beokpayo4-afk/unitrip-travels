@@ -434,7 +434,7 @@ export const tourGalleries = {
     { src: unsplash('photo-1602216056096-3b40cc0c9944'), caption: 'Kerala backwaters' },
     { src: unsplash('photo-1593693397690-362cb9666fc2'), caption: 'Houseboat stay' },
     { src: unsplash('photo-1544735716-392fe2489ffa'), caption: 'Tea gardens' },
-    { src: unsplash('photo-1582510003544-4d00b7f74250'), caption: 'Kochi harbour' },
+    { src: '/destinations/fort-kochi.jpg', caption: 'Fort Kochi sunset' },
   ],
   t4: [
     { src: '/destinations/kashmir.jpg', caption: 'Dal Lake houseboats' },
@@ -600,7 +600,7 @@ export const destinationPlaces = {
   kerala: [
     { name: 'Alleppey Backwaters', note: 'Houseboats through palm-lined canals.', image: unsplash('photo-1602216056096-3b40cc0c9944') },
     { name: 'Munnar Tea Gardens', note: 'Rolling hills of tea and mist.', image: unsplash('photo-1544735716-392fe2489ffa') },
-    { name: 'Fort Kochi', note: 'Chinese fishing nets and colonial streets.', image: unsplash('photo-1582510003544-4d00b7f74250') },
+    { name: 'Fort Kochi', note: 'Sunset on the pier, Chinese fishing nets and colonial streets.', image: '/destinations/fort-kochi.jpg' },
     { name: 'Periyar Wildlife', note: 'Boat safari in Thekkady’s tiger reserve.', image: unsplash('photo-1441974231531-c6227db76b6e') },
   ],
   manali: [
