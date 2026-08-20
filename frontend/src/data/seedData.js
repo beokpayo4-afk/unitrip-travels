@@ -5,7 +5,7 @@ export const localDestinations = [
   { id: 'noida', name: 'Noida', region: 'local', tagline: 'NCR Day Out', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop', startingPrice: 1999, distanceKm: 25 },
   { id: 'gurugram', name: 'Gurugram', region: 'local', tagline: 'City & Cyber Hub', image: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=1200&auto=format&fit=crop', startingPrice: 2499, distanceKm: 32 },
   { id: 'mathura', name: 'Mathura', region: 'local', tagline: "Krishna's City", image: '/destinations/mathura.jpg', startingPrice: 3499, distanceKm: 150 },
-  { id: 'haridwar', name: 'Haridwar', region: 'local', tagline: 'Ganga Aarti', image: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=1200&auto=format&fit=crop', startingPrice: 4499, distanceKm: 220 },
+  { id: 'haridwar', name: 'Haridwar', region: 'local', tagline: 'Ganga Aarti', image: '/destinations/haridwar.jpg', startingPrice: 4499, distanceKm: 220 },
   { id: 'rishikesh', name: 'Rishikesh', region: 'local', tagline: 'Yoga & Rapids', image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop', startingPrice: 4999, distanceKm: 240 },
   { id: 'chandigarh', name: 'Chandigarh', region: 'local', tagline: 'The Planned City', image: '/destinations/chandigarh.jpg', startingPrice: 5499, distanceKm: 250 },
   { id: 'shimla', name: 'Shimla', region: 'local', tagline: 'Queen of Hills', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop', startingPrice: 6999, distanceKm: 350 },
