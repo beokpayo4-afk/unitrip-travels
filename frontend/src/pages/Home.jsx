@@ -94,7 +94,7 @@ export default function Home() {
       {/* Hotels & Flights */}
       <section className="py-20 bg-white">
         <div className="container-x">
-          <SectionHeader eyebrow="Plan Every Detail" title="Hotels & Flights" description="Search stays across Unitrip destinations, plus live flights powered by Amadeus." />
+          <SectionHeader eyebrow="Plan Every Detail" title="Hotels & Flights" description="Search stays and flights across every Unitrip destination." />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <HotelSearch />
             <FlightSearch />

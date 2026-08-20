@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { PlaneTakeoff, PlaneLanding, Clock, Users } from 'lucide-react'
 
 function formatTime(iso) {
@@ -6,7 +7,6 @@ function formatTime(iso) {
 }
 
 function formatDuration(iso) {
-  // Amadeus returns ISO 8601 durations like "PT2H15M"
   if (!iso) return ''
   const match = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?/)
   if (!match) return iso
@@ -15,6 +15,9 @@ function formatDuration(iso) {
 }
 
 export default function FlightResultCard({ flight }) {
+  const airlineLabel = flight.airlineName || flight.airline
+  const subject = `Flight enquiry: ${flight.departureAirport} to ${flight.arrivalAirport}`
+
   return (
     <div className="bg-white rounded-2xl shadow-soft hover:shadow-card transition-shadow p-5 flex flex-col sm:flex-row sm:items-center gap-4">
       <div className="w-12 h-12 rounded-xl bg-navy/5 flex items-center justify-center shrink-0">
@@ -40,18 +43,21 @@ export default function FlightResultCard({ flight }) {
         <div>
           <p className="text-[11px] text-charcoal/50 mb-0.5 flex items-center gap-1"><Users className="w-3 h-3" /> Seats left</p>
           <p className="font-heading font-semibold text-navy">{flight.seatsAvailable ?? '—'}</p>
-          <p className="text-xs text-charcoal/60">Airline {flight.airline}</p>
+          <p className="text-xs text-charcoal/60">{airlineLabel}</p>
         </div>
       </div>
 
       <div className="text-right shrink-0">
-        <p className="text-[11px] text-charcoal/50">Price</p>
+        <p className="text-[11px] text-charcoal/50">From</p>
         <p className="font-heading font-bold text-xl text-navy">
           {flight.currency === 'INR' ? '₹' : `${flight.currency} `}{Number(flight.price).toLocaleString('en-IN')}
         </p>
-        <button className="mt-1 text-xs font-semibold bg-gold hover:bg-gold-dark text-white px-4 py-2 rounded-full transition-colors">
-          Select
-        </button>
+        <Link
+          to={`/contact?subject=${encodeURIComponent(subject)}`}
+          className="mt-1 inline-block text-xs font-semibold bg-gold hover:bg-gold-dark text-white px-4 py-2 rounded-full transition-colors"
+        >
+          Enquire
+        </Link>
       </div>
     </div>
   )

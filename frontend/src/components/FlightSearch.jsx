@@ -1,27 +1,60 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { MapPin, Calendar, Users, Search, PlaneTakeoff } from 'lucide-react'
 import { searchFlights } from '../api/hotelsFlights.js'
+import { flightCities, searchFlightsLocal } from '../data/seedData.js'
 
-export default function FlightSearch({ onResults, onSearchingChange, onError }) {
+export default function FlightSearch({ onResults, onSearchingChange, onError, onQueryChange }) {
+  const navigate = useNavigate()
   const [form, setForm] = useState({ from: '', to: '', departure: '', passengers: 1 })
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  const deliver = (data) => {
+    const payload = Array.isArray(data) ? data : []
+    onQueryChange?.(form)
+    onResults?.(payload)
+    if (!onResults) {
+      navigate('/flights', { state: { results: payload, query: form } })
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (form.from.trim().toLowerCase() === form.to.trim().toLowerCase()) {
+      const message = 'Origin and destination must be different.'
+      setError(message)
+      onError?.(message)
+      return
+    }
     setLoading(true)
-    onSearchingChange?.(true)
+    setError('')
     onError?.('')
+    onSearchingChange?.(true)
     onResults?.(null)
     try {
       const { data } = await searchFlights(form)
-      onResults?.(data)
-    } catch (err) {
-      const message =
-        err?.response?.status === 503
-          ? 'Flight search isn\u2019t configured yet \u2014 add AMADEUS_API_KEY and AMADEUS_API_SECRET to the backend .env file.'
-          : err?.response?.data?.message || 'Flight search failed. Please try again in a moment.'
+      if (Array.isArray(data) && data.length) {
+        deliver(data)
+        return
+      }
+      const local = searchFlightsLocal(form)
+      if (!local.length) {
+        const message = 'No flights found for this route. Try nearby cities or another date.'
+        setError(message)
+        onError?.(message)
+      }
+      deliver(local)
+    } catch {
+      const local = searchFlightsLocal(form)
+      if (local.length) {
+        deliver(local)
+        return
+      }
+      const message = 'No flights found for this route. Try nearby cities or another date.'
+      setError(message)
       onError?.(message)
-      onResults?.([])
+      deliver([])
     } finally {
       setLoading(false)
       onSearchingChange?.(false)
@@ -37,13 +70,30 @@ export default function FlightSearch({ onResults, onSearchingChange, onError }) 
       <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="text-xs font-semibold text-charcoal/60 mb-1.5 flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> From</label>
-          <input value={form.from} onChange={(e) => setForm({ ...form, from: e.target.value })} placeholder="City or airport (e.g. Delhi, DEL)" required
-            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50" />
+          <input
+            value={form.from}
+            onChange={(e) => setForm({ ...form, from: e.target.value })}
+            placeholder="City or airport (e.g. Delhi)"
+            list="flight-cities"
+            required
+            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+          />
         </div>
         <div>
           <label className="text-xs font-semibold text-charcoal/60 mb-1.5 flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> To</label>
-          <input value={form.to} onChange={(e) => setForm({ ...form, to: e.target.value })} placeholder="City or airport (e.g. Mumbai, BOM)" required
-            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50" />
+          <input
+            value={form.to}
+            onChange={(e) => setForm({ ...form, to: e.target.value })}
+            placeholder="City or airport (e.g. Goa)"
+            list="flight-cities"
+            required
+            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+          />
+          <datalist id="flight-cities">
+            {flightCities.map((city) => (
+              <option key={city} value={city} />
+            ))}
+          </datalist>
         </div>
         <div>
           <label className="text-xs font-semibold text-charcoal/60 mb-1.5 flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> Departure</label>
@@ -58,6 +108,7 @@ export default function FlightSearch({ onResults, onSearchingChange, onError }) 
         <button type="submit" disabled={loading} className="btn-primary sm:col-span-2 w-full">
           <Search className="w-4 h-4" /> {loading ? 'Searching...' : 'Search Flights'}
         </button>
+        {error && <p className="sm:col-span-2 text-xs text-charcoal/50 text-center">{error}</p>}
       </form>
     </div>
   )

@@ -206,6 +206,185 @@ export function mergeHotelResults(primary = [], fallback = []) {
   return merged
 }
 
+export const flightCities = [
+  'Delhi', 'Mumbai', 'Goa', 'Jaipur', 'Agra', 'Kochi', 'Srinagar', 'Chandigarh', 'Amritsar',
+  'Dehradun', 'Manali', 'Bengaluru', 'Dubai', 'Bali', 'Bangkok', 'Singapore', 'Maldives', 'Paris', 'Zurich', 'London',
+]
+
+const airportCodes = {
+  delhi: 'DEL', 'new delhi': 'DEL', del: 'DEL', ncr: 'DEL', noida: 'DEL', gurugram: 'DEL', gurgaon: 'DEL',
+  mumbai: 'BOM', bombay: 'BOM', bom: 'BOM',
+  goa: 'GOI', goi: 'GOI',
+  jaipur: 'JAI', rajasthan: 'JAI', jai: 'JAI',
+  agra: 'AGR', agr: 'AGR',
+  kochi: 'COK', kerala: 'COK', cochin: 'COK', alleppey: 'COK', cok: 'COK',
+  srinagar: 'SXR', kashmir: 'SXR', sxr: 'SXR',
+  chandigarh: 'IXC', ixc: 'IXC',
+  amritsar: 'ATQ', atq: 'ATQ',
+  dehradun: 'DED', haridwar: 'DED', rishikesh: 'DED', ded: 'DED',
+  manali: 'KUU', kullu: 'KUU', kuu: 'KUU',
+  bengaluru: 'BLR', bangalore: 'BLR', blr: 'BLR',
+  dubai: 'DXB', dxb: 'DXB', uae: 'DXB',
+  bali: 'DPS', dps: 'DPS', ubud: 'DPS',
+  bangkok: 'BKK', thailand: 'BKK', bkk: 'BKK', phuket: 'HKT',
+  singapore: 'SIN', sin: 'SIN',
+  maldives: 'MLE', male: 'MLE', mle: 'MLE',
+  paris: 'CDG', france: 'CDG', cdg: 'CDG',
+  zurich: 'ZRH', switzerland: 'ZRH', interlaken: 'ZRH', zrh: 'ZRH',
+  london: 'LHR', uk: 'LHR', britain: 'LHR', lhr: 'LHR',
+}
+
+const airlineNames = {
+  '6E': 'IndiGo', AI: 'Air India', UK: 'Vistara', SG: 'SpiceJet',
+  EK: 'Emirates', SQ: 'Singapore Airlines', TG: 'Thai Airways',
+  BA: 'British Airways', AF: 'Air France', LX: 'SWISS', GA: 'Garuda Indonesia',
+}
+
+function resolveAirport(query) {
+  const q = String(query || '').trim().toLowerCase()
+  if (!q) return ''
+  if (/^[a-z]{3}$/.test(q)) return q.toUpperCase()
+  return airportCodes[q] || ''
+}
+
+function flightDateTime(date, time) {
+  return `${date}T${time}:00`
+}
+
+function addFlightDuration(date, time, duration) {
+  const start = new Date(`${date}T${time}:00`)
+  const match = String(duration).match(/PT(?:(\d+)H)?(?:(\d+)M)?/)
+  const hours = Number(match?.[1] || 0)
+  const minutes = Number(match?.[2] || 0)
+  start.setMinutes(start.getMinutes() + hours * 60 + minutes)
+  const pad = (n) => String(n).padStart(2, '0')
+  return `${start.getFullYear()}-${pad(start.getMonth() + 1)}-${pad(start.getDate())}T${pad(start.getHours())}:${pad(start.getMinutes())}:00`
+}
+
+const flightRouteCatalog = [
+  { from: 'DEL', to: 'BOM', duration: 'PT2H15M', options: [
+    { airline: '6E', dep: '06:15', price: 4599, seats: 7 },
+    { airline: 'AI', dep: '09:40', price: 6120, seats: 4 },
+    { airline: 'UK', dep: '14:10', price: 6899, seats: 9 },
+    { airline: 'SG', dep: '19:25', price: 3999, seats: 3 },
+  ]},
+  { from: 'DEL', to: 'GOI', duration: 'PT2H40M', options: [
+    { airline: '6E', dep: '07:00', price: 5299, seats: 8 },
+    { airline: 'AI', dep: '11:20', price: 7480, seats: 5 },
+    { airline: 'SG', dep: '16:45', price: 4899, seats: 6 },
+  ]},
+  { from: 'DEL', to: 'JAI', duration: 'PT1H10M', options: [
+    { airline: '6E', dep: '08:05', price: 2899, seats: 12 },
+    { airline: 'AI', dep: '13:30', price: 3499, seats: 6 },
+    { airline: 'UK', dep: '18:15', price: 4199, seats: 4 },
+  ]},
+  { from: 'DEL', to: 'COK', duration: 'PT3H05M', options: [
+    { airline: '6E', dep: '05:50', price: 6899, seats: 5 },
+    { airline: 'AI', dep: '10:15', price: 8420, seats: 3 },
+    { airline: 'UK', dep: '15:40', price: 7999, seats: 8 },
+  ]},
+  { from: 'DEL', to: 'SXR', duration: 'PT1H30M', options: [
+    { airline: '6E', dep: '06:40', price: 5499, seats: 6 },
+    { airline: 'AI', dep: '12:05', price: 6299, seats: 4 },
+    { airline: 'SG', dep: '17:20', price: 4999, seats: 7 },
+  ]},
+  { from: 'DEL', to: 'IXC', duration: 'PT1H05M', options: [
+    { airline: '6E', dep: '07:25', price: 2599, seats: 11 },
+    { airline: 'AI', dep: '14:50', price: 3199, seats: 5 },
+    { airline: 'UK', dep: '20:10', price: 3699, seats: 2 },
+  ]},
+  { from: 'DEL', to: 'ATQ', duration: 'PT1H15M', options: [
+    { airline: '6E', dep: '08:20', price: 2799, seats: 9 },
+    { airline: 'AI', dep: '15:35', price: 3399, seats: 4 },
+    { airline: 'SG', dep: '21:00', price: 2499, seats: 6 },
+  ]},
+  { from: 'DEL', to: 'DED', duration: 'PT1H00M', options: [
+    { airline: '6E', dep: '09:10', price: 2399, seats: 10 },
+    { airline: 'AI', dep: '16:25', price: 2899, seats: 5 },
+  ]},
+  { from: 'DEL', to: 'KUU', duration: 'PT1H25M', options: [
+    { airline: '6E', dep: '10:00', price: 4599, seats: 4 },
+    { airline: 'AI', dep: '13:45', price: 5299, seats: 3 },
+  ]},
+  { from: 'BOM', to: 'GOI', duration: 'PT1H15M', options: [
+    { airline: '6E', dep: '06:50', price: 3199, seats: 8 },
+    { airline: 'UK', dep: '12:30', price: 4299, seats: 5 },
+    { airline: 'SG', dep: '18:40', price: 2899, seats: 7 },
+  ]},
+  { from: 'DEL', to: 'DXB', duration: 'PT3H50M', options: [
+    { airline: 'AI', dep: '04:30', price: 18999, seats: 6 },
+    { airline: 'EK', dep: '10:15', price: 24999, seats: 9 },
+    { airline: '6E', dep: '16:40', price: 16999, seats: 4 },
+  ]},
+  { from: 'DEL', to: 'DPS', duration: 'PT8H20M', options: [
+    { airline: 'AI', dep: '00:40', price: 28999, seats: 5, stops: 1 },
+    { airline: 'GA', dep: '09:10', price: 32999, seats: 3, stops: 1 },
+    { airline: 'SQ', dep: '22:15', price: 35999, seats: 6, stops: 1 },
+  ]},
+  { from: 'DEL', to: 'BKK', duration: 'PT4H10M', options: [
+    { airline: 'AI', dep: '01:20', price: 14999, seats: 7 },
+    { airline: 'TG', dep: '11:45', price: 18999, seats: 8 },
+    { airline: '6E', dep: '23:05', price: 12999, seats: 4 },
+  ]},
+  { from: 'DEL', to: 'SIN', duration: 'PT5H35M', options: [
+    { airline: 'AI', dep: '09:00', price: 22999, seats: 5 },
+    { airline: 'SQ', dep: '12:30', price: 28999, seats: 7 },
+    { airline: '6E', dep: '23:40', price: 19999, seats: 3 },
+  ]},
+  { from: 'DEL', to: 'MLE', duration: 'PT4H00M', options: [
+    { airline: 'AI', dep: '08:50', price: 24999, seats: 4 },
+    { airline: 'UK', dep: '13:15', price: 26999, seats: 6 },
+  ]},
+  { from: 'DEL', to: 'CDG', duration: 'PT9H15M', options: [
+    { airline: 'AI', dep: '02:10', price: 42999, seats: 5 },
+    { airline: 'AF', dep: '13:25', price: 48999, seats: 8 },
+  ]},
+  { from: 'DEL', to: 'ZRH', duration: 'PT8H40M', options: [
+    { airline: 'AI', dep: '01:55', price: 45999, seats: 4, stops: 1 },
+    { airline: 'LX', dep: '12:40', price: 52999, seats: 6 },
+  ]},
+  { from: 'DEL', to: 'LHR', duration: 'PT9H25M', options: [
+    { airline: 'AI', dep: '02:30', price: 41999, seats: 6 },
+    { airline: 'BA', dep: '10:05', price: 49999, seats: 7 },
+    { airline: 'UK', dep: '14:20', price: 43999, seats: 3 },
+  ]},
+  { from: 'BOM', to: 'DXB', duration: 'PT3H20M', options: [
+    { airline: 'AI', dep: '05:45', price: 16499, seats: 5 },
+    { airline: 'EK', dep: '11:00', price: 21999, seats: 8 },
+    { airline: '6E', dep: '18:30', price: 14999, seats: 4 },
+  ]},
+]
+
+export function searchFlightsLocal({ from, to, departure, passengers } = {}) {
+  const origin = resolveAirport(from)
+  const dest = resolveAirport(to)
+  if (!origin || !dest || origin === dest || !departure) return []
+
+  const route = flightRouteCatalog.find((r) => r.from === origin && r.to === dest)
+    || flightRouteCatalog.find((r) => r.from === dest && r.to === origin)
+  const reversed = route && !(route.from === origin && route.to === dest)
+  if (!route) return []
+
+  const pax = Math.max(1, Number(passengers) || 1)
+  const fromCode = reversed ? route.to : route.from
+  const toCode = reversed ? route.from : route.to
+
+  return route.options.map((option, index) => ({
+    id: `${fromCode}-${toCode}-${option.airline}-${index + 1}`,
+    price: option.price * pax,
+    currency: 'INR',
+    airline: option.airline,
+    airlineName: airlineNames[option.airline] || option.airline,
+    stops: option.stops || 0,
+    duration: route.duration,
+    departureAirport: fromCode,
+    departureTime: flightDateTime(departure, option.dep),
+    arrivalAirport: toCode,
+    arrivalTime: addFlightDuration(departure, option.dep, route.duration),
+    seatsAvailable: option.seats,
+  }))
+}
+
 export const destinationGroups = [
   { key: 'local', label: 'Local', items: localDestinations },
   { key: 'india', label: 'India', items: indiaDestinations },
