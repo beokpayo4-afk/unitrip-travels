@@ -34,6 +34,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/destinations" element={<Destinations />} />
+          <Route path="/destinations/local" element={<Destinations region="local" />} />
           <Route path="/destinations/india" element={<Destinations region="india" />} />
           <Route path="/destinations/international" element={<Destinations region="international" />} />
           <Route path="/destinations/popular" element={<Destinations region="popular" />} />

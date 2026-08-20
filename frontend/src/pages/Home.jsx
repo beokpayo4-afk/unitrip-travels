@@ -16,15 +16,15 @@ import HotelSearch from '../components/HotelSearch.jsx'
 import FlightSearch from '../components/FlightSearch.jsx'
 import GroupTicketService from '../components/GroupTicketService.jsx'
 
-import { indiaDestinations, internationalDestinations, tourPackages, testimonials } from '../data/seedData.js'
+import { indiaDestinations, internationalDestinations, localDestinations, tourPackages, testimonials } from '../data/seedData.js'
 
 const features = [
   { icon: BadgeIndianRupee, title: 'Best Prices', description: 'Competitive prices and transparent packages.' },
   { icon: SlidersHorizontal, title: 'Customized Trips', description: 'Create a trip based on your budget and preferences.' },
   { icon: ShieldCheck, title: 'Trusted Service', description: 'Reliable travel partners and verified services.' },
   { icon: Headset, title: '24/7 Support', description: 'Help whenever you need it.' },
-  { icon: Globe2, title: 'Domestic & International', description: 'Travel across India and around the world.' },
-  { icon: Ticket, title: 'Group Tickets', description: 'Ticket sizes from 100 to 1,000 for corporate, events and large groups.' },
+  { icon: Globe2, title: 'India & International', description: 'Local getaways, pan-India tours, and trips around the world.' },
+  { icon: Ticket, title: 'Group Tickets', description: 'Ticket size from 100 to 1,000 based on distance from New Delhi.' },
 ]
 
 function SectionHeader({ eyebrow, title, description }) {
@@ -47,6 +47,13 @@ export default function Home() {
       <section className="py-20">
         <div className="container-x">
           <SectionHeader eyebrow="Explore" title="Popular Destinations" description="Discover some of the most beautiful destinations and create memories that last forever." />
+          <div className="flex items-center justify-between mb-5">
+            <h3 className="font-heading font-semibold text-navy">Local</h3>
+            <Link to="/destinations/local" className="text-sm font-semibold text-gold">View All →</Link>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 mb-14">
+            {localDestinations.map((d) => <DestinationCard key={d.id} destination={d} />)}
+          </div>
           <h3 className="font-heading font-semibold text-navy mb-5">India</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 mb-14">
             {indiaDestinations.slice(0, 8).map((d) => <DestinationCard key={d.id} destination={d} />)}

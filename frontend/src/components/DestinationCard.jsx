@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
+import { ticketSizeForDestination } from '../data/seedData.js'
 
 export default function DestinationCard({ destination }) {
   return (
@@ -23,6 +24,11 @@ export default function DestinationCard({ destination }) {
         <p className="text-sm text-charcoal/60 mb-2">{destination.tagline}</p>
         {destination.startingPrice && (
           <p className="text-sm font-semibold text-navy">From ₹{destination.startingPrice.toLocaleString('en-IN')}</p>
+        )}
+        {destination.distanceKm != null && destination.region !== 'international' && (
+          <p className="text-xs text-charcoal/50 mt-1">
+            {destination.distanceKm.toLocaleString('en-IN')} km · Ticket size {ticketSizeForDestination(destination)}
+          </p>
         )}
       </div>
     </Link>

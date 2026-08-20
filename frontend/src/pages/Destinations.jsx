@@ -1,10 +1,11 @@
 import { useState, useMemo } from 'react'
-import { indiaDestinations, internationalDestinations, popularDestinations } from '../data/seedData.js'
+import { indiaDestinations, internationalDestinations, localDestinations, popularDestinations } from '../data/seedData.js'
 import DestinationCard from '../components/DestinationCard.jsx'
 import EmptyState from '../components/EmptyState.jsx'
 
 const tabs = [
   { key: 'popular', label: 'Popular' },
+  { key: 'local', label: 'Local' },
   { key: 'india', label: 'India' },
   { key: 'international', label: 'International' },
 ]
@@ -13,6 +14,7 @@ export default function Destinations({ region }) {
   const [tab, setTab] = useState(region || 'popular')
 
   const list = useMemo(() => {
+    if (tab === 'local') return localDestinations
     if (tab === 'india') return indiaDestinations
     if (tab === 'international') return internationalDestinations
     return popularDestinations

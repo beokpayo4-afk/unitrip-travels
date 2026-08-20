@@ -2,9 +2,9 @@ import { useState } from 'react'
 
 const demoBookings = [
   { id: 'b1', customer: 'Ananya Sharma', tour: 'Rajasthan Heritage Tour', date: '2026-09-12', travelers: 2, total: 37998, status: 'Confirmed' },
-  { id: 'b2', customer: 'Rohan Mehta', tour: 'Bali Honeymoon Special', date: '2026-10-05', travelers: 2, total: 97998, status: 'Pending' },
+  { id: 'b2', customer: 'Rohan Mehta', tour: 'Kashmir Paradise Tour', date: '2026-10-05', travelers: 2, total: 55998, status: 'Pending' },
   { id: 'b3', customer: 'Priya Nair', tour: 'Kerala Backwaters Bliss', date: '2026-09-28', travelers: 4, total: 99996, status: 'Completed' },
-  { id: 'b4', customer: 'Karan Verma', tour: 'Switzerland Alpine Dream', date: '2026-11-15', travelers: 2, total: 259998, status: 'Pending' },
+  { id: 'b4', customer: 'Karan Verma', tour: 'Ladakh Himalayan Dream', date: '2026-11-15', travelers: 2, total: 65998, status: 'Pending' },
 ]
 
 const statusColors = {

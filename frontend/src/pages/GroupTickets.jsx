@@ -1,34 +1,38 @@
 import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { CheckCircle2, Ticket } from 'lucide-react'
-import { ticketSizes } from '../data/seedData.js'
+import { allDestinations, ticketDestinationGroups, ticketOrigin, ticketSizeForDestination, ticketSizes } from '../data/seedData.js'
 
 const tripTypes = ['Flights', 'Tour Packages', 'Hotels', 'Transfers', 'Mixed / Custom']
 
 const initial = {
-  fullName: '', email: '', phone: '', destination: '', travelDate: '',
+  fullName: '', email: '', phone: '', travelDate: '',
   serviceType: 'Flights', requirements: '',
 }
 
 export default function GroupTickets() {
   const [params] = useSearchParams()
-  const preset = Number(params.get('size'))
-  const startingSize = ticketSizes.includes(preset) ? preset : 100
+  const presetId = params.get('destination')
+  const startingDest = allDestinations.find((d) => d.id === presetId && d.region !== 'international') || allDestinations[0]
 
-  const [ticketSize, setTicketSize] = useState(startingSize)
+  const [destinationId, setDestinationId] = useState(startingDest.id)
   const [form, setForm] = useState(initial)
   const [errors, setErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
   const [status, setStatus] = useState(null)
 
-  const sizeLabel = useMemo(() => ticketSize.toLocaleString('en-IN'), [ticketSize])
+  const destination = useMemo(
+    () => allDestinations.find((d) => d.id === destinationId) || allDestinations[0],
+    [destinationId],
+  )
+  const ticketSize = ticketSizeForDestination(destination)
+  const sizeLabel = ticketSize.toLocaleString('en-IN')
 
   const validate = () => {
     const e = {}
     if (!form.fullName.trim()) e.fullName = 'Full name is required'
     if (!/^\S+@\S+\.\S+$/.test(form.email)) e.email = 'Enter a valid email'
     if (!/^[0-9+\-\s]{7,15}$/.test(form.phone)) e.phone = 'Enter a valid phone number'
-    if (!form.destination.trim()) e.destination = 'Destination is required'
     if (!form.travelDate) e.travelDate = 'Travel date is required'
     setErrors(e)
     return Object.keys(e).length === 0
@@ -43,6 +47,9 @@ export default function GroupTickets() {
       existing.push({
         id: `gt-${Date.now()}`,
         ...form,
+        destination: destination.name,
+        destinationId: destination.id,
+        distanceKm: destination.distanceKm,
         ticketSize,
         createdAt: new Date().toISOString(),
       })
@@ -74,10 +81,10 @@ export default function GroupTickets() {
         <div className="text-center mb-10">
           <p className="section-heading-eyebrow mb-3">Group Ticket Service</p>
           <h1 className="font-heading font-bold text-3xl sm:text-4xl text-navy mb-3">
-            Book 100 to 1,000 Tickets
+            Ticket Size by Destination Distance
           </h1>
           <p className="text-charcoal/60 max-w-xl mx-auto">
-            Choose your ticket size and tell us the trip details. Our team will quote bulk flights, tours, or stays for your group.
+            Ticket size applies to Local and India destinations only, from 100 to 1,000 based on distance from {ticketOrigin}. International destinations are not included.
           </p>
         </div>
 
@@ -86,43 +93,61 @@ export default function GroupTickets() {
             <CheckCircle2 className="w-12 h-12 text-green-600 mx-auto mb-4" />
             <h3 className="font-heading font-semibold text-xl text-navy mb-2">Request Submitted!</h3>
             <p className="text-charcoal/60">
-              We received your request for <strong>{sizeLabel} tickets</strong>. A consultant will contact you within 24 hours.
+              We received your request for <strong>{sizeLabel} tickets</strong> to <strong>{destination.name}</strong> ({destination.distanceKm.toLocaleString('en-IN')} km from {ticketOrigin}).
             </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-card p-6 sm:p-8 space-y-6">
             <div className="rounded-2xl bg-offwhite p-5">
+              <label className="text-sm font-medium text-charcoal/80 mb-1.5 block">Destination</label>
+              <select
+                value={destinationId}
+                onChange={(e) => setDestinationId(e.target.value)}
+                className="w-full border border-gray-200 bg-white rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 mb-5"
+              >
+                {ticketDestinationGroups.map((group) => (
+                  <optgroup key={group.key} label={group.label}>
+                    {group.items.map((d) => (
+                      <option key={d.id} value={d.id}>
+                        {d.name} — {d.distanceKm.toLocaleString('en-IN')} km from {ticketOrigin}
+                      </option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
+
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-11 h-11 rounded-xl bg-navy flex items-center justify-center">
                   <Ticket className="w-5 h-5 text-gold" />
                 </span>
                 <div>
-                  <p className="text-sm text-charcoal/50">Ticket size</p>
+                  <p className="text-sm text-charcoal/50">Ticket size for this distance</p>
                   <p className="font-heading font-bold text-xl text-navy">{sizeLabel} tickets</p>
                 </div>
               </div>
+              <p className="text-sm text-charcoal/60 mb-3">
+                {destination.region === 'local' ? 'Local trip' : 'India trip'}: {destination.name} is about <strong>{destination.distanceKm.toLocaleString('en-IN')} km</strong> from {ticketOrigin}, so the ticket size is set automatically.
+              </p>
               <input
                 type="range"
                 min={100}
                 max={1000}
                 step={100}
                 value={ticketSize}
-                onChange={(e) => setTicketSize(Number(e.target.value))}
-                className="w-full accent-gold mb-4"
-                aria-label="Ticket size from 100 to 1000"
+                readOnly
+                className="w-full accent-gold mb-3 pointer-events-none"
+                aria-label="Ticket size from destination distance"
               />
               <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
                 {ticketSizes.map((size) => (
-                  <button
+                  <span
                     key={size}
-                    type="button"
-                    onClick={() => setTicketSize(size)}
-                    className={`rounded-lg py-1.5 text-xs font-semibold transition-all ${
-                      ticketSize === size ? 'bg-gold text-white' : 'bg-white text-navy hover:bg-navy hover:text-white'
+                    className={`rounded-lg py-1.5 text-xs font-semibold text-center ${
+                      ticketSize === size ? 'bg-gold text-white' : 'bg-white text-charcoal/35'
                     }`}
                   >
                     {size}
-                  </button>
+                  </span>
                 ))}
               </div>
             </div>
@@ -131,7 +156,6 @@ export default function GroupTickets() {
               {field('fullName', 'Full Name')}
               {field('email', 'Email', 'email')}
               {field('phone', 'Phone')}
-              {field('destination', 'Destination / Route')}
               {field('travelDate', 'Travel Date', 'date')}
               <div>
                 <label className="text-sm font-medium text-charcoal/80 mb-1.5 block">Service Type</label>
@@ -156,7 +180,7 @@ export default function GroupTickets() {
             </div>
 
             <button type="submit" disabled={submitting} className="btn-primary w-full">
-              {submitting ? 'Submitting...' : `Request ${sizeLabel} Tickets`}
+              {submitting ? 'Submitting...' : `Request ${sizeLabel} Tickets to ${destination.name}`}
             </button>
           </form>
         )}

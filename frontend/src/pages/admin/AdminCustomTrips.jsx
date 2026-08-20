@@ -1,6 +1,6 @@
 const demoRequests = [
   { id: 'c1', name: 'Sanjay Gupta', destination: 'Kashmir', tripType: 'Family', budget: 60000, date: '2026-09-20' },
-  { id: 'c2', name: 'Neha Kapoor', destination: 'Maldives', tripType: 'Honeymoon', budget: 200000, date: '2026-10-10' },
+  { id: 'c2', name: 'Neha Kapoor', destination: 'Goa', tripType: 'Honeymoon', budget: 80000, date: '2026-10-10' },
 ]
 
 export default function AdminCustomTrips() {

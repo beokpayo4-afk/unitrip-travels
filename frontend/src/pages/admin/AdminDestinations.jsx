@@ -54,7 +54,7 @@ export default function AdminDestinations() {
         <form onSubmit={handleAdd} className="space-y-4">
           <input required placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm" />
           <select value={form.region} onChange={(e) => setForm({ ...form, region: e.target.value })} className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm">
-            <option value="india">India</option><option value="international">International</option>
+            <option value="local">Local</option><option value="india">India</option><option value="international">International</option>
           </select>
           <input placeholder="Tagline" value={form.tagline} onChange={(e) => setForm({ ...form, tagline: e.target.value })} className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm" />
           <input required type="number" placeholder="Starting Price" value={form.startingPrice} onChange={(e) => setForm({ ...form, startingPrice: e.target.value })} className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm" />

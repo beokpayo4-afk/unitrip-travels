@@ -2,12 +2,13 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MapPin, Calendar, Users, Compass, Search } from 'lucide-react'
 
-const travelTypes = ['Tour Packages', 'Hotels', 'Flights', 'International Trips', 'Customized Trips']
+const travelTypes = ['Tour Packages', 'Hotels', 'Flights', 'India Destinations', 'International Trips', 'Customized Trips']
 
 const typeToRoute = {
   'Tour Packages': '/tour-packages',
   'Hotels': '/hotels',
   'Flights': '/flights',
+  'India Destinations': '/destinations/india',
   'International Trips': '/destinations/international',
   'Customized Trips': '/customized-trip',
 }

@@ -26,7 +26,7 @@ export default function About() {
             <p className="section-heading-eyebrow mb-3">Our Story</p>
             <h2 className="font-heading font-bold text-3xl text-navy mb-5">Your Trusted Travel Partner Since Day One</h2>
             <p className="text-charcoal/70 leading-relaxed mb-4">
-              Unitrip Travels was founded with a simple belief: travel should be effortless, personal and memorable. From weekend getaways across India to bucket-list international escapes, we design every itinerary with care and attention to detail.
+              Unitrip Travels was founded with a simple belief: travel should be effortless, personal and memorable. From local weekend getaways to pan-India tours, we design every itinerary with care and attention to detail.
             </p>
             <p className="text-charcoal/70 leading-relaxed">
               Our team of travel consultants works closely with verified hotels, local guides and transport partners to ensure every Unitrip journey is safe, comfortable and unforgettable.
