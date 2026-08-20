@@ -5,6 +5,7 @@ import ProtectedRoute from './components/ProtectedRoute.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Destinations from './pages/Destinations.jsx'
+import DestinationDetails from './pages/DestinationDetails.jsx'
 import TourPackages from './pages/TourPackages.jsx'
 import TourDetails from './pages/TourDetails.jsx'
 import Hotels from './pages/Hotels.jsx'
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/destinations/india" element={<Destinations region="india" />} />
           <Route path="/destinations/international" element={<Destinations region="international" />} />
           <Route path="/destinations/popular" element={<Destinations region="popular" />} />
+          <Route path="/destinations/:id" element={<DestinationDetails />} />
           <Route path="/tour-packages" element={<TourPackages />} />
           <Route path="/tour-packages/:category" element={<TourPackages />} />
           <Route path="/tour/:id" element={<TourDetails />} />

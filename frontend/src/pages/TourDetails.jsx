@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Star, Clock, MapPin, CheckCircle2, XCircle } from 'lucide-react'
-import { tourPackages, tourItinerary, faqs } from '../data/seedData.js'
+import { tourPackages, tourItinerary, faqs, photosForTour, placesForTour } from '../data/seedData.js'
+import TouristPlacesGrid from '../components/TouristPlacesGrid.jsx'
 import EmptyState from '../components/EmptyState.jsx'
 
 const tabs = ['Overview', 'Itinerary', 'Inclusions', 'Exclusions', 'Reviews', 'FAQ']
@@ -12,11 +13,13 @@ const exclusions = ['Airfare / train fare', 'Personal expenses', 'Travel insuran
 export default function TourDetails() {
   const { id } = useParams()
   const [tab, setTab] = useState('Overview')
+  const [lightbox, setLightbox] = useState(null)
   const tour = tourPackages.find((t) => t.id === id)
 
   if (!tour) return <EmptyState title="Tour not found" description="This tour package may have been removed or the link is incorrect." />
 
   const itinerary = tourItinerary[id] || tourItinerary.t1
+  const photos = photosForTour(tour)
 
   return (
     <div>
@@ -51,6 +54,32 @@ export default function TourDetails() {
             <div>
               <h3 className="font-heading font-semibold text-xl text-navy mb-3">Trip Overview</h3>
               <p className="text-charcoal/70 leading-relaxed">{tour.description} This carefully curated {tour.duration.toLowerCase()} package covers {tour.destination}, blending comfortable stays, guided sightseeing and authentic local experiences for a well-rounded trip.</p>
+
+              {photos.length > 0 && (
+                <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {photos.map((photo) => (
+                    <button
+                      key={photo.src + photo.caption}
+                      type="button"
+                      onClick={() => setLightbox(photo)}
+                      className="group relative rounded-xl overflow-hidden h-36 sm:h-44 text-left"
+                    >
+                      <img src={photo.src} alt={photo.caption || tour.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      {photo.caption && (
+                        <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/80 to-transparent text-white text-xs px-3 py-2">
+                          {photo.caption}
+                        </span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              <TouristPlacesGrid
+                places={placesForTour(tour)}
+                title={`Places to visit in ${tour.destination}`}
+                onSelect={(place) => setLightbox({ src: place.image, caption: place.name })}
+              />
             </div>
           )}
 
@@ -115,6 +144,20 @@ export default function TourDetails() {
           </div>
         </div>
       </div>
+
+      {lightbox && (
+        <button
+          type="button"
+          onClick={() => setLightbox(null)}
+          className="fixed inset-0 z-50 bg-navy/85 flex items-center justify-center p-4"
+        >
+          <img
+            src={lightbox.src}
+            alt={lightbox.caption || tour.title}
+            className="max-h-[85vh] max-w-full rounded-2xl object-contain shadow-card"
+          />
+        </button>
+      )}
     </div>
   )
 }

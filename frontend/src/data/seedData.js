@@ -415,6 +415,327 @@ export const tourPackages = [
 
 export const tourCategories = ['domestic', 'international', 'honeymoon', 'family', 'adventure', 'luxury', 'weekend', 'group']
 
+const unsplash = (id) => `https://images.unsplash.com/${id}?q=80&w=1200&auto=format&fit=crop`
+
+export const tourGalleries = {
+  t1: [
+    { src: unsplash('photo-1477587458883-47145ed94245'), caption: 'Jaipur palaces' },
+    { src: unsplash('photo-1599661046289-e31897846e41'), caption: 'Mehrangarh Fort, Jodhpur' },
+    { src: unsplash('photo-1617516202907-ff75846e6667'), caption: 'Udaipur City Palace' },
+    { src: unsplash('photo-1524492412937-b28074a5d7da'), caption: 'Rajasthan markets' },
+  ],
+  t2: [
+    { src: unsplash('photo-1512343879784-a960bf40e7f2'), caption: 'Goa beach' },
+    { src: unsplash('photo-1454391304352-2bf4678b1a7a'), caption: 'Arabian Sea' },
+    { src: unsplash('photo-1507525428034-b723cf961d3e'), caption: 'Sunset coastline' },
+    { src: unsplash('photo-1544551763-46a013bb70d5'), caption: 'Water sports' },
+  ],
+  t3: [
+    { src: unsplash('photo-1602216056096-3b40cc0c9944'), caption: 'Kerala backwaters' },
+    { src: unsplash('photo-1593693397690-362cb9666fc2'), caption: 'Houseboat stay' },
+    { src: unsplash('photo-1544735716-392fe2489ffa'), caption: 'Tea gardens' },
+    { src: unsplash('photo-1582510003544-4d00b7f74250'), caption: 'Kochi harbour' },
+  ],
+  t4: [
+    { src: '/destinations/kashmir.jpg', caption: 'Dal Lake houseboats' },
+    { src: unsplash('photo-1506905925346-21bda4d32df4'), caption: 'Himalayan peaks' },
+    { src: unsplash('photo-1626621341517-bbf3d9990a23'), caption: 'Gulmarg meadows' },
+    { src: unsplash('photo-1590490360182-c0bd6959d45d'), caption: 'Mountain stay' },
+  ],
+  t5: [
+    { src: unsplash('photo-1617516202907-ff75846e6667'), caption: 'Udaipur City Palace' },
+    { src: unsplash('photo-1477587458883-47145ed94245'), caption: 'Lake Pichola' },
+    { src: unsplash('photo-1582719478250-c89cae4dc85b'), caption: 'Heritage luxury stay' },
+    { src: unsplash('photo-1566073771259-6a8506099945'), caption: 'Palace interiors' },
+  ],
+  t6: [
+    { src: unsplash('photo-1544551763-46a013bb70d5'), caption: 'Andaman islands' },
+    { src: unsplash('photo-1507525428034-b723cf961d3e'), caption: 'White-sand beach' },
+    { src: unsplash('photo-1559827260-dc66d52bef19'), caption: 'Coral waters' },
+    { src: unsplash('photo-1573843981267-be1999ff37cd'), caption: 'Island sunset' },
+  ],
+  t7: [
+    { src: unsplash('photo-1506905925346-21bda4d32df4'), caption: 'Meghalaya hills' },
+    { src: unsplash('photo-1432405972618-c60b0225b8f9'), caption: 'Waterfalls' },
+    { src: unsplash('photo-1441974231531-c6227db76b6e'), caption: 'Living root forest' },
+    { src: unsplash('photo-1470071459604-3b5ec3a7fe05'), caption: 'Monsoon landscapes' },
+  ],
+  t8: [
+    { src: unsplash('photo-1626621341517-bbf3d9990a23'), caption: 'Manali mountains' },
+    { src: unsplash('photo-1506905925346-21bda4d32df4'), caption: 'Solang Valley' },
+    { src: unsplash('photo-1464822759023-fed622ff2c3b'), caption: 'Himalayan trail' },
+    { src: unsplash('photo-1590490360182-c0bd6959d45d'), caption: 'Hill stay' },
+  ],
+  t9: [
+    { src: unsplash('photo-1506905925346-21bda4d32df4'), caption: 'Ladakh peaks' },
+    { src: unsplash('photo-1470071459604-3b5ec3a7fe05'), caption: 'Pangong Lake' },
+    { src: unsplash('photo-1464822759023-fed622ff2c3b'), caption: 'Mountain pass' },
+    { src: unsplash('photo-1483728642387-6c3bdd6c93e5'), caption: 'High-altitude landscape' },
+  ],
+  t10: [
+    { src: unsplash('photo-1512343879784-a960bf40e7f2'), caption: 'South Goa beach' },
+    { src: unsplash('photo-1571003123894-1f0594d2b5d9'), caption: 'Beach resort' },
+    { src: unsplash('photo-1520250497591-112f2f40a3f4'), caption: 'Pool villa' },
+    { src: unsplash('photo-1542314831-068cd1dbfeeb'), caption: 'Sunset dinner' },
+  ],
+  t11: [
+    { src: unsplash('photo-1564507592333-c60657eea523'), caption: 'Taj Mahal, Agra' },
+    { src: unsplash('photo-1587474260584-136574528ed5'), caption: 'Delhi' },
+    { src: unsplash('photo-1477587458883-47145ed94245'), caption: 'Jaipur' },
+    { src: unsplash('photo-1524492412937-b28074a5d7da'), caption: 'Golden Triangle' },
+  ],
+  t12: [
+    { src: unsplash('photo-1477587458883-47145ed94245'), caption: 'Pink City, Jaipur' },
+    { src: unsplash('photo-1599661046289-e31897846e41'), caption: 'Amber Fort' },
+    { src: unsplash('photo-1524492412937-b28074a5d7da'), caption: 'City Palace' },
+    { src: unsplash('photo-1566073771259-6a8506099945'), caption: 'Heritage stay' },
+  ],
+  t13: [
+    { src: unsplash('photo-1512453979798-5ea266f8880c'), caption: 'Dubai skyline' },
+    { src: unsplash('photo-1547234935-80c7145ec969'), caption: 'Desert safari' },
+    { src: unsplash('photo-1518684079-3c830dcef090'), caption: 'Marina nights' },
+    { src: unsplash('photo-1512632578888-169bbbc64f33'), caption: 'Abu Dhabi' },
+    { src: unsplash('photo-1582719478250-c89cae4dc85b'), caption: 'Five-star stay' },
+    { src: unsplash('photo-1528702748617-c76dfcc6199f'), caption: 'Downtown Dubai' },
+  ],
+  t14: [
+    { src: unsplash('photo-1518548419970-58e3b4079ab2'), caption: 'Bali temples' },
+    { src: unsplash('photo-1537996194471-e657df975ab4'), caption: 'Rice terraces' },
+    { src: unsplash('photo-1552733407-5d5c46c3bb3b'), caption: 'Nusa Penida' },
+    { src: unsplash('photo-1571003123894-1f0594d2b5d9'), caption: 'Private villa' },
+  ],
+  t15: [
+    { src: unsplash('photo-1552465011-b4e21bf6e79a'), caption: 'Thailand islands' },
+    { src: unsplash('photo-1528183429752-a97d0bf99b5a'), caption: 'Bangkok' },
+    { src: unsplash('photo-1506665531195-3566af2b4dfa'), caption: 'Phuket beach' },
+    { src: unsplash('photo-1559592413-7cec4d0cae2b'), caption: 'Krabi cliffs' },
+  ],
+  t16: [
+    { src: unsplash('photo-1530122037265-a5f1f91d3b99'), caption: 'Swiss Alps' },
+    { src: unsplash('photo-1527668759903-ce2bd4d98d8c'), caption: 'Interlaken' },
+    { src: unsplash('photo-1506905925346-21bda4d32df4'), caption: 'Alpine village' },
+    { src: unsplash('photo-1464822759023-fed622ff2c3b'), caption: 'Mountain railway' },
+  ],
+  t17: [
+    { src: unsplash('photo-1573843981267-be1999ff37cd'), caption: 'Overwater villa' },
+    { src: unsplash('photo-1514282401047-d79a3154dda0'), caption: 'Maldives lagoon' },
+    { src: unsplash('photo-1439066615861-d1af74d74000'), caption: 'Coral reef' },
+    { src: unsplash('photo-1507525428034-b723cf961d3e'), caption: 'Island sunset' },
+  ],
+  t18: [
+    { src: unsplash('photo-1525625293386-3f8f99389edd'), caption: 'Singapore skyline' },
+    { src: unsplash('photo-1496939376851-89342e90adcd'), caption: 'Gardens by the Bay' },
+    { src: unsplash('photo-1565967511849-76a60a516170'), caption: 'Marina Bay' },
+    { src: unsplash('photo-1525625293386-3f8f99389edd'), caption: 'Sentosa' },
+  ],
+}
+
+export function photosForTour(tour) {
+  const gallery = tourGalleries[tour?.id]
+  if (gallery?.length) return gallery
+  return tour?.image ? [{ src: tour.image, caption: tour.title }] : []
+}
+
+export const destinationPlaces = {
+  noida: [
+    { name: 'DLF Mall of India', note: 'One of Asia’s largest malls for shopping and dining.', image: unsplash('photo-1486406146926-c627a92ad1ab') },
+    { name: 'Okhla Bird Sanctuary', note: 'Wetlands and migratory birds on the Yamuna.', image: unsplash('photo-1441974231531-c6227db76b6e') },
+    { name: 'Worlds of Wonder', note: 'Theme park, water rides and evening shows.', image: unsplash('photo-1513889961551-628c1e5e2ee9') },
+    { name: 'Sector 18 Market', note: 'Street food, shops and NCR nightlife.', image: unsplash('photo-1555396273-367ea4eb4db5') },
+  ],
+  gurugram: [
+    { name: 'Cyber Hub', note: 'Restaurants, live music and the city’s social square.', image: unsplash('photo-1542314831-068cd1dbfeeb') },
+    { name: 'Kingdom of Dreams', note: 'Bollywood-style theatre and culture show.', image: unsplash('photo-1514525253161-7a46d19cd819') },
+    { name: 'Leisure Valley', note: 'Gardens and walking trails through the city.', image: unsplash('photo-1441974231531-c6227db76b6e') },
+    { name: 'Ambience Mall', note: 'Shopping, cinema and family entertainment.', image: unsplash('photo-1519567241046-7f570eee3ce6') },
+  ],
+  mathura: [
+    { name: 'Prem Mandir', note: 'Marble temple complex lit beautifully at dusk.', image: '/destinations/mathura.jpg' },
+    { name: 'Krishna Janmabhoomi', note: 'Sacred birthplace of Lord Krishna.', image: unsplash('photo-1524492412937-b28074a5d7da') },
+    { name: 'Vishram Ghat', note: 'Yamuna aarti and evening boat rides.', image: unsplash('photo-1544735716-392fe2489ffa') },
+    { name: 'Govardhan Hill', note: 'Parikrama walks and temple stops around the hill.', image: unsplash('photo-1506905925346-21bda4d32df4') },
+  ],
+  haridwar: [
+    { name: 'Har Ki Pauri', note: 'The main ghat for the evening Ganga Aarti.', image: '/destinations/haridwar.jpg' },
+    { name: 'Mansa Devi Temple', note: 'Hilltop temple reached by cable car.', image: unsplash('photo-1544735716-392fe2489ffa') },
+    { name: 'Chandi Devi Temple', note: 'Shakti temple overlooking the Ganga.', image: unsplash('photo-1524492412937-b28074a5d7da') },
+    { name: 'Ganga Aarti', note: 'Lamps, chants and a riverfront ritual at sunset.', image: unsplash('photo-1477587458883-47145ed94245') },
+  ],
+  rishikesh: [
+    { name: 'Laxman Jhula', note: 'Iconic suspension bridge over the Ganga.', image: unsplash('photo-1544735716-392fe2489ffa') },
+    { name: 'Beatles Ashram', note: 'Murals and quiet ruins in the forest.', image: unsplash('photo-1506905925346-21bda4d32df4') },
+    { name: 'Triveni Ghat', note: 'Evening aarti on the river steps.', image: unsplash('photo-1432405972618-c60b0225b8f9') },
+    { name: 'River Rafting', note: 'Rapids on the Ganga for adventure seekers.', image: unsplash('photo-1530866495561-507c9faab2ed') },
+  ],
+  chandigarh: [
+    { name: 'Rock Garden', note: 'Nek Chand’s folk-art city of recycled sculptures.', image: '/destinations/chandigarh.jpg' },
+    { name: 'Sukhna Lake', note: 'Boating and sunset walks by the hills.', image: unsplash('photo-1439066615861-d1af74d74000') },
+    { name: 'Rose Garden', note: 'Asia’s largest rose garden in bloom.', image: unsplash('photo-1490750967868-88aa4486c946') },
+    { name: 'Capitol Complex', note: 'Le Corbusier’s modernist landmarks.', image: unsplash('photo-1486406146926-c627a92ad1ab') },
+  ],
+  shimla: [
+    { name: 'Mall Road', note: 'Colonial shops, cafes and ridge views.', image: unsplash('photo-1506905925346-21bda4d32df4') },
+    { name: 'The Ridge', note: 'Open square with Christ Church and Himalayan air.', image: unsplash('photo-1464822759023-fed622ff2c3b') },
+    { name: 'Jakhu Temple', note: 'Hilltop Hanuman temple above the town.', image: unsplash('photo-1544735716-392fe2489ffa') },
+    { name: 'Kufri', note: 'Snow views, ponies and short treks.', image: unsplash('photo-1483728642387-6c3bdd6c93e5') },
+  ],
+  amritsar: [
+    { name: 'Golden Temple', note: 'Harmandir Sahib glowing over the sacred pool.', image: '/destinations/amritsar.jpg' },
+    { name: 'Jallianwala Bagh', note: 'Memorial garden of India’s freedom struggle.', image: unsplash('photo-1524492412937-b28074a5d7da') },
+    { name: 'Wagah Border', note: 'Evening flag-lowering ceremony with Pakistan.', image: unsplash('photo-1587474260584-136574528ed5') },
+    { name: 'Partition Museum', note: 'Stories of 1947 in the Town Hall.', image: unsplash('photo-1477587458883-47145ed94245') },
+  ],
+  raj: [
+    { name: 'Amber Fort, Jaipur', note: 'Hill fort, elephant rides and mirrored halls.', image: unsplash('photo-1477587458883-47145ed94245') },
+    { name: 'Hawa Mahal', note: 'Palace of winds in the Pink City.', image: unsplash('photo-1599661046289-e31897846e41') },
+    { name: 'Mehrangarh Fort, Jodhpur', note: 'Clifftop fort above the Blue City.', image: unsplash('photo-1599661046289-e31897846e41') },
+    { name: 'Lake Pichola, Udaipur', note: 'Boat rides past palaces on the lake.', image: unsplash('photo-1617516202907-ff75846e6667') },
+  ],
+  goa: [
+    { name: 'Baga Beach', note: 'Shacks, water sports and nightlife.', image: unsplash('photo-1512343879784-a960bf40e7f2') },
+    { name: 'Calangute Beach', note: 'The classic North Goa stretch of sand.', image: unsplash('photo-1507525428034-b723cf961d3e') },
+    { name: 'Basilica of Bom Jesus', note: 'UNESCO church in Old Goa.', image: unsplash('photo-1524492412937-b28074a5d7da') },
+    { name: 'Dudhsagar Falls', note: 'Four-tier waterfall on the Goa–Karnataka border.', image: unsplash('photo-1432405972618-c60b0225b8f9') },
+  ],
+  kerala: [
+    { name: 'Alleppey Backwaters', note: 'Houseboats through palm-lined canals.', image: unsplash('photo-1602216056096-3b40cc0c9944') },
+    { name: 'Munnar Tea Gardens', note: 'Rolling hills of tea and mist.', image: unsplash('photo-1544735716-392fe2489ffa') },
+    { name: 'Fort Kochi', note: 'Chinese fishing nets and colonial streets.', image: unsplash('photo-1582510003544-4d00b7f74250') },
+    { name: 'Periyar Wildlife', note: 'Boat safari in Thekkady’s tiger reserve.', image: unsplash('photo-1441974231531-c6227db76b6e') },
+  ],
+  manali: [
+    { name: 'Hadimba Temple', note: 'Cedar-wood temple in the pine forest.', image: unsplash('photo-1626621341517-bbf3d9990a23') },
+    { name: 'Solang Valley', note: 'Paragliding, snow and mountain views.', image: unsplash('photo-1464822759023-fed622ff2c3b') },
+    { name: 'Rohtang Pass', note: 'High-altitude snow pass when open.', image: unsplash('photo-1483728642387-6c3bdd6c93e5') },
+    { name: 'Old Manali', note: 'Cafes, river walks and hippie lanes.', image: unsplash('photo-1506905925346-21bda4d32df4') },
+  ],
+  kashmir: [
+    { name: 'Dal Lake', note: 'Shikara rides and houseboats in Srinagar.', image: '/destinations/kashmir.jpg' },
+    { name: 'Gulmarg', note: 'Meadows, gondola and snow slopes.', image: unsplash('photo-1506905925346-21bda4d32df4') },
+    { name: 'Pahalgam', note: 'Lidder river, Betaab Valley and pine trails.', image: unsplash('photo-1464822759023-fed622ff2c3b') },
+    { name: 'Shankaracharya Temple', note: 'Hilltop shrine with lake views.', image: unsplash('photo-1544735716-392fe2489ffa') },
+  ],
+  delhi: [
+    { name: 'India Gate', note: 'War memorial and evening lawns.', image: unsplash('photo-1587474260584-136574528ed5') },
+    { name: 'Red Fort', note: 'Mughal sandstone citadel in Old Delhi.', image: unsplash('photo-1524492412937-b28074a5d7da') },
+    { name: 'Qutub Minar', note: 'Soaring minaret in the Mehrauli complex.', image: unsplash('photo-1477587458883-47145ed94245') },
+    { name: 'Lotus Temple', note: 'Baháʼí house of worship in bloom form.', image: unsplash('photo-1582510003544-4d00b7f74250') },
+  ],
+  mumbai: [
+    { name: 'Gateway of India', note: 'Harbour arch and the city’s welcome icon.', image: unsplash('photo-1529253355930-ddbe423a2ac7') },
+    { name: 'Marine Drive', note: 'Queen’s Necklace along the Arabian Sea.', image: unsplash('photo-1566552881560-0be862a7c445') },
+    { name: 'Elephanta Caves', note: 'Island rock-cut temples by ferry.', image: unsplash('photo-1524492412937-b28074a5d7da') },
+    { name: 'Juhu Beach', note: 'Sunset, street food and sea breeze.', image: unsplash('photo-1507525428034-b723cf961d3e') },
+  ],
+  agra: [
+    { name: 'Taj Mahal', note: 'Marble mausoleum and sunrise views.', image: unsplash('photo-1564507592333-c60657eea523') },
+    { name: 'Agra Fort', note: 'Red sandstone palace-fort on the Yamuna.', image: unsplash('photo-1524492412937-b28074a5d7da') },
+    { name: 'Fatehpur Sikri', note: 'Akbar’s abandoned capital nearby.', image: unsplash('photo-1477587458883-47145ed94245') },
+    { name: 'Mehtab Bagh', note: 'Moonlight garden facing the Taj.', image: unsplash('photo-1441974231531-c6227db76b6e') },
+  ],
+  dubai: [
+    { name: 'Burj Khalifa', note: 'World’s tallest tower and downtown views.', image: unsplash('photo-1512453979798-5ea266f8880c') },
+    { name: 'Desert Safari', note: 'Dune bashing, camel rides and BBQ camps.', image: unsplash('photo-1547234935-80c7145ec969') },
+    { name: 'Palm Jumeirah', note: 'Palm-shaped island and luxury resorts.', image: unsplash('photo-1518684079-3c830dcef090') },
+    { name: 'Sheikh Zayed Mosque', note: 'Abu Dhabi’s white marble grand mosque.', image: unsplash('photo-1512632578888-169bbbc64f33') },
+  ],
+  bali: [
+    { name: 'Tanah Lot', note: 'Sea temple on a rock at sunset.', image: unsplash('photo-1518548419970-58e3b4079ab2') },
+    { name: 'Tegalalang Rice Terraces', note: 'Green steps of Ubud countryside.', image: unsplash('photo-1537996194471-e657df975ab4') },
+    { name: 'Uluwatu Temple', note: 'Cliff temple and Kecak fire dance.', image: unsplash('photo-1552733407-5d5c46c3bb3b') },
+    { name: 'Nusa Penida', note: 'Kelingking Beach and turquoise coves.', image: unsplash('photo-1573790387438-4da905039392') },
+  ],
+  thailand: [
+    { name: 'Grand Palace, Bangkok', note: 'Royal complex and Temple of the Emerald Buddha.', image: unsplash('photo-1528183429752-a97d0bf99b5a') },
+    { name: 'Phi Phi Islands', note: 'Limestone cliffs and island hopping.', image: unsplash('photo-1552465011-b4e21bf6e79a') },
+    { name: 'Phuket Beaches', note: 'Patong, Kata and Andaman sunsets.', image: unsplash('photo-1506665531195-3566af2b4dfa') },
+    { name: 'Krabi Cliffs', note: 'Railay Beach and limestone karsts.', image: unsplash('photo-1559592413-7cec4d0cae2b') },
+  ],
+  singapore: [
+    { name: 'Gardens by the Bay', note: 'Supertrees and Cloud Forest dome.', image: unsplash('photo-1496939376851-89342e90adcd') },
+    { name: 'Marina Bay Sands', note: 'SkyPark, light-and-water show.', image: unsplash('photo-1525625293386-3f8f99389edd') },
+    { name: 'Sentosa Island', note: 'Beaches, Universal Studios and cable car.', image: unsplash('photo-1565967511849-76a60a516170') },
+    { name: 'Merlion Park', note: 'The city’s iconic lion-fish statue.', image: unsplash('photo-1508964942454-34034b1d3d3a') },
+  ],
+  maldives: [
+    { name: 'Malé City', note: 'Friday Mosque and harbour life.', image: unsplash('photo-1514282401047-d79a3154dda0') },
+    { name: 'Overwater Villas', note: 'Private decks above the lagoon.', image: unsplash('photo-1573843981267-be1999ff37cd') },
+    { name: 'Coral Reefs', note: 'Snorkelling with reef fish and turtles.', image: unsplash('photo-1439066615861-d1af74d74000') },
+    { name: 'Sandbank Picnic', note: 'White sand in the middle of the ocean.', image: unsplash('photo-1507525428034-b723cf961d3e') },
+  ],
+  paris: [
+    { name: 'Eiffel Tower', note: 'Iron lattice tower and Champ de Mars.', image: unsplash('photo-1502602898657-3e91760cbb34') },
+    { name: 'Louvre Museum', note: 'Mona Lisa and the glass pyramid.', image: unsplash('photo-1499856871958-5b9627545d1a') },
+    { name: 'Notre-Dame', note: 'Gothic cathedral on the Île de la Cité.', image: unsplash('photo-1478391679764-b211d31e39cd') },
+    { name: 'Seine River Cruise', note: 'Evening lights along the Left Bank.', image: unsplash('photo-1502602898657-3e91760cbb34') },
+  ],
+  switzerland: [
+    { name: 'Interlaken', note: 'Lakes, paragliding and Jungfrau views.', image: unsplash('photo-1530122037265-a5f1f91d3b99') },
+    { name: 'Jungfraujoch', note: 'Top of Europe by scenic train.', image: unsplash('photo-1527668759903-ce2bd4d98d8c') },
+    { name: 'Chapel Bridge, Lucerne', note: 'Covered wooden bridge on the lake.', image: unsplash('photo-1527668759903-ce2bd4d98d8c') },
+    { name: 'Lake Zurich', note: 'Promenade, boats and alpine backdrop.', image: unsplash('photo-1506905925346-21bda4d32df4') },
+  ],
+  london: [
+    { name: 'Big Ben & Westminster', note: 'Parliament and the famous clock tower.', image: unsplash('photo-1513635269975-59663e0ac1ad') },
+    { name: 'Tower Bridge', note: 'Victorian drawbridge on the Thames.', image: unsplash('photo-1486299267070-83823f5448dd') },
+    { name: 'Buckingham Palace', note: 'Changing of the Guard and royal gardens.', image: unsplash('photo-1529655683826-aba9b3e77383') },
+    { name: 'London Eye', note: 'River views from the giant observation wheel.', image: unsplash('photo-1513635269975-59663e0ac1ad') },
+  ],
+  andaman: [
+    { name: 'Havelock Island', note: 'Radhanagar Beach and clear Andaman water.', image: unsplash('photo-1544551763-46a013bb70d5') },
+    { name: 'Cellular Jail', note: 'National memorial in Port Blair.', image: unsplash('photo-1524492412937-b28074a5d7da') },
+    { name: 'Neil Island', note: 'Natural Bridge and quiet coves.', image: unsplash('photo-1507525428034-b723cf961d3e') },
+    { name: 'Scuba & Coral', note: 'Reef dives around Havelock.', image: unsplash('photo-1559827260-dc66d52bef19') },
+  ],
+  meghalaya: [
+    { name: 'Living Root Bridges', note: 'Jingkieng Jri bridges in the Khasi hills.', image: unsplash('photo-1441974231531-c6227db76b6e') },
+    { name: 'Cherrapunji Falls', note: 'Nohkalikai and monsoon cliffs.', image: unsplash('photo-1432405972618-c60b0225b8f9') },
+    { name: 'Dawki River', note: 'Crystal-clear Umngot for boat rides.', image: unsplash('photo-1506905925346-21bda4d32df4') },
+    { name: 'Shillong', note: 'Police Bazaar and Umiam Lake.', image: unsplash('photo-1470071459604-3b5ec3a7fe05') },
+  ],
+  ladakh: [
+    { name: 'Pangong Lake', note: 'High-altitude blue lake on the Tibetan plateau.', image: unsplash('photo-1506905925346-21bda4d32df4') },
+    { name: 'Nubra Valley', note: 'Sand dunes, camels and Diskit monastery.', image: unsplash('photo-1464822759023-fed622ff2c3b') },
+    { name: 'Leh Palace', note: 'Nine-storey royal palace above Leh.', image: unsplash('photo-1524492412937-b28074a5d7da') },
+    { name: 'Khardung La', note: 'One of the world’s highest motorable passes.', image: unsplash('photo-1483728642387-6c3bdd6c93e5') },
+  ],
+}
+
+const placeAliases = {
+  jaipur: 'raj', jodhpur: 'raj', udaipur: 'raj', rajasthan: 'raj',
+  srinagar: 'kashmir', gulmarg: 'kashmir', pahalgam: 'kashmir',
+  'abu dhabi': 'dubai',
+  ubud: 'bali', seminyak: 'bali', 'nusa penida': 'bali',
+  bangkok: 'thailand', phuket: 'thailand', krabi: 'thailand',
+  zurich: 'switzerland', interlaken: 'switzerland', lucerne: 'switzerland',
+  male: 'maldives',
+  alleppey: 'kerala', munnar: 'kerala', kochi: 'kerala',
+  'north goa': 'goa', 'south goa': 'goa', 'north & south goa': 'goa',
+  'south goa beach resort': 'goa',
+  'port blair': 'andaman', havelock: 'andaman', 'neil island': 'andaman', andaman: 'andaman',
+  shillong: 'meghalaya', cherrapunji: 'meghalaya', dawki: 'meghalaya', meghalaya: 'meghalaya',
+  leh: 'ladakh', nubra: 'ladakh', pangong: 'ladakh', ladakh: 'ladakh',
+}
+
+export function placesForDestination(destinationOrId) {
+  const id = typeof destinationOrId === 'string' ? destinationOrId : destinationOrId?.id
+  return destinationPlaces[id] || []
+}
+
+export function placesForTour(tour) {
+  const tokens = String(tour?.destination || '')
+    .split(/[•,]/)
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean)
+  const ids = new Set()
+  for (const token of tokens) {
+    if (placeAliases[token]) ids.add(placeAliases[token])
+    const match = allDestinations.find((d) => d.name.toLowerCase() === token || d.id === token)
+    if (match) ids.add(match.id)
+  }
+  return [...ids].flatMap((id) => (destinationPlaces[id] || []).map((place) => ({ ...place, destinationId: id })))
+}
+
 export const ticketSizes = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
 export const ticketOrigin = 'New Delhi'
 const MAX_LOCAL_DISTANCE_KM = 900

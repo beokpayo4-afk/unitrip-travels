@@ -15,7 +15,7 @@ export default function InternationalCard({ destination }) {
         <p className="text-sm text-white/80 mb-3">{destination.tagline}</p>
         <div className="flex items-center justify-between">
           <span className="text-sm font-semibold">From ₹{destination.startingPrice.toLocaleString('en-IN')}</span>
-          <Link to={`/tour-packages?destination=${destination.name}`} className="text-xs font-semibold bg-white/15 hover:bg-gold px-3 py-1.5 rounded-full transition-colors">
+          <Link to={`/destinations/${destination.id}`} className="text-xs font-semibold bg-white/15 hover:bg-gold px-3 py-1.5 rounded-full transition-colors">
             Explore
           </Link>
         </div>

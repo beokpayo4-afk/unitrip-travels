@@ -5,7 +5,7 @@ import { ticketSizeForDestination } from '../data/seedData.js'
 export default function DestinationCard({ destination }) {
   return (
     <Link
-      to={`/tour-packages?destination=${destination.name}`}
+      to={`/destinations/${destination.id}`}
       className="group relative rounded-2xl overflow-hidden bg-white shadow-soft hover:shadow-card transition-all duration-300 block"
     >
       <div className="h-56 overflow-hidden">
